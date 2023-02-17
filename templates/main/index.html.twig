@@ -3,6 +3,9 @@
 {% block title %}bienvenue au Quai Antique{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
 <h1>Page d'accueil</h1>
 
 {% endblock %}
