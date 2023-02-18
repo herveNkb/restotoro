@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +32,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $default_allergies = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $default_customer_number = null;
 
     public function getId(): ?int
     {
@@ -129,6 +136,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getDefaultAllergies(): ?string
+    {
+        return $this->default_allergies;
+    }
+
+    public function setDefaultAllergies(?string $default_allergies): self
+    {
+        $this->default_allergies = $default_allergies;
+
+        return $this;
+    }
+
+    public function getDefaultCustomerNumber(): ?int
+    {
+        return $this->default_customer_number;
+    }
+
+    public function setDefaultCustomerNumber(?int $default_customer_number): self
+    {
+        $this->default_customer_number = $default_customer_number;
 
         return $this;
     }
