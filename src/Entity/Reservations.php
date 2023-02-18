@@ -26,6 +26,9 @@ class Reservations
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $allergies = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?Users $users = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Reservations
     public function setAllergies(?string $allergies): self
     {
         $this->allergies = $allergies;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

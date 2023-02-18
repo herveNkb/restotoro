@@ -19,6 +19,9 @@ class Menus
     #[ORM\Column]
     private ?int $dish_price = null;
 
+    #[ORM\ManyToOne(inversedBy: 'menuses')]
+    private ?Users $users = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Menus
     public function setDishPrice(int $dish_price): self
     {
         $this->dish_price = $dish_price;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }
