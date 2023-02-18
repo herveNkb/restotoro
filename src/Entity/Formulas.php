@@ -23,6 +23,10 @@ class Formulas
     #[ORM\Column]
     private ?int $formula_price = null;
 
+    #[ORM\ManyToOne(inversedBy: 'formulas')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $users = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +64,18 @@ class Formulas
     public function setFormulaPrice(int $formula_price): self
     {
         $this->formula_price = $formula_price;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -38,6 +40,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?int $default_customer_number = null;
+
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Formulas::class)]
+    private Collection $formulas;
+
+    public function __construct()
+    {
+        $this->formulas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -160,6 +170,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDefaultCustomerNumber(?int $default_customer_number): self
     {
         $this->default_customer_number = $default_customer_number;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Formulas>
+     */
+    public function getFormulas(): Collection
+    {
+        return $this->formulas;
+    }
+
+    public function addFormula(Formulas $formula): self
+    {
+        if (!$this->formulas->contains($formula)) {
+            $this->formulas->add($formula);
+            $formula->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormula(Formulas $formula): self
+    {
+        if ($this->formulas->removeElement($formula)) {
+            // set the owning side to null (unless already changed)
+            if ($formula->getUsers() === $this) {
+                $formula->setUsers(null);
+            }
+        }
 
         return $this;
     }
