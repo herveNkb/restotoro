@@ -1,0 +1,53 @@
+/* Index :
+I) Propriétés globales
+II) navbar de bootstrap
+
+*/
+
+/* I) Propriétés globales */
+body {
+    background-color: #0d2935;
+    color: #b6863a;
+}
+
+
+
+/* II) navbar de bootstrap */
+.nav-logo {
+    height: 30px;
+    width: auto;
+}
+
+.nav-link {
+    color: #b6863a;
+}
+
+.nav-link:hover {
+    color: #dd992c;
+}
+
+.navbar-toggler {
+    background: #b6863a;
+}
+
+@media screen and (min-width: 800px){
+    .nav-logo {
+        height: 50px;
+        width: auto;
+    }
+}
+
+
+
+
+
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-container > div {
+    width: 50%;
+    text-align: center;
+}
