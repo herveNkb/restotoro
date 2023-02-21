@@ -8,8 +8,6 @@ IV) Formulaire de connexion
 V) Formulaire d'enregistrement
 VI) Formule de réinitialisation de mot de passe
 VII) Page de reinitialiser-le-mot-de-passe/envoi-email
-
-
 VIII) Page d'acueil
 */
 
@@ -100,15 +98,6 @@ h1 {
     .nav-item > a {
         font-size: 1.4rem;
     }
-}
-
-/* Position provisoire du footer le temps de la mise en page du contenu*/
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 30px;
-    width: 100%;
 }
 
 .footer-container {
@@ -326,31 +315,37 @@ margin: 30px 0 30px;
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Page d'accueil */
 .alert-success {
     width: 300px;
     text-align: center;
 }
 
+.main-container {
+    margin: 80px 30px 150px 30px;
+}
 
+.main-container > p {
+    text-align: justify;
+}
 
+@media screen and (min-width: 800px) {
+    .main-container > p {
+        padding: 0 50px;
+    }
+}
 
+@media screen and (min-width: 1200px) {
+    .main-container > p {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .main-container > p {
+        padding: 0 250px;
+    }
+}
 
 
 
