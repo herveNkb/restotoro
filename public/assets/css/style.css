@@ -108,6 +108,15 @@ h1 {
 .footer-container > div {
     width: 50%;
     text-align: center;
+    padding-bottom: 50px;
+}
+
+.footer-container  a {
+    color: #b6863a;
+}
+
+.footer-container  a:hover {
+    color: #dd992c;
 }
 
 /* III) Boutons */
