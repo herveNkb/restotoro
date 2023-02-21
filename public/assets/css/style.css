@@ -6,6 +6,11 @@ II) "navbar & footer"
 III) Boutons
 IV) Formulaire de connexion
 V) Formulaire d'enregistrement
+VI) Formule de réinitialisation de mot de passe
+VII) Page de reinitialiser-le-mot-de-passe/envoi-email
+
+
+VIII) Page d'acueil
 */
 
 /* I) Propriétés globales */
@@ -230,8 +235,6 @@ margin: 30px 0 30px;
     .form-register-tablet {
         margin: 0 40px;
     }
-
-
 }
 
 @media screen and (min-width: 1200px) {
@@ -254,6 +257,74 @@ margin: 30px 0 30px;
     }
 }
 
+/* VI) Formule de réinitialisation de mot de passe */
+.container-form-reset-password {
+    margin-top: 50px;
+}
+
+.explicative-text-reset-password {
+    padding-top: 15px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .container-form-reset-password {
+        margin: 0 50px;
+    }
+}
+
+/* VII) Page de reinitialiser-le-mot-de-passe/envoi-email*/
+.container-check-email {
+    margin: 80px 25px 0;
+}
+
+.text-check-email {
+    margin-bottom: 25px;
+}
+
+.text-check-email >p {
+    font-family: Gentium Book Basic, serif;
+}
+
+.container-check-email :nth-child(2n) {
+    text-align: center;
+}
+
+.text-check-email {
+    text-align: center;
+}
+
+.text-check-email a {
+    text-decoration: none;
+    color: #2632A8;
+}
+
+@media screen and (min-width: 800px) {
+    .container-check-email p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container-check-email {
+        text-align: center;
+    }
+
+    .container-check-email {
+        margin: 100px 80px 0;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .container-check-email {
+        margin-top: 200px;
+    }
+
+    .text-check-email p {
+        font-size: 24px;
+    }
+}
 
 
 
@@ -263,6 +334,19 @@ margin: 30px 0 30px;
 
 
 
+
+
+
+
+
+
+
+
+/* Page d'accueil */
+.alert-success {
+    width: 300px;
+    text-align: center;
+}
 
 
 
