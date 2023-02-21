@@ -6,17 +6,30 @@
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <h1>Réinitialisez votre mot de passe</h1>
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser
-                votre mot de passe.
-            </small>
+    <main class="container-form">
+        <h1 class="title-form">Réinitialisez votre mot de passe</h1>
+        <div class="form container-form-reset-password">
+            {{ form_start(requestForm) }}
+            {{ form_row(requestForm.email, {
+                label: 'E-mail',
+                attr: {
+                    placeholder: 'E-mail'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            <div class="explicative-text-reset-password">
+                <p>
+                    Entrez votre adresse e-mail et nous vous enverrons un lien pour
+                    réinitialiser votre mot de passe.
+                </p>
+            </div>
+            <div class="container-btn-form">
+                <button class="btn-form btn-form-position btn-login">Envoyer</button>
+            </div>
+            {{ form_end(requestForm) }}
         </div>
-
-        <button class="btn btn-primary">Envoyer la demande de réinitialisation </button>
-    {{ form_end(requestForm) }}
+    </main>
 {% endblock %}
