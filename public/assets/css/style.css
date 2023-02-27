@@ -21,19 +21,16 @@ body {
 /* h1 */
 @font-face {
     font-family: 'Volkhov', serif;
-    src: url("https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 }
 
 /* Sous-titres */
 @font-face {
     font-family: 'Patua One', cursive;
-    src: url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
 }
 
 /* Textes */
 @font-face {
     font-family: 'Gentium Book Basic', serif;
-    src: url("https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 }
 
 /* I-b) "Headings" globales */
