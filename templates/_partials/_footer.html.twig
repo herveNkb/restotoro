@@ -1,10 +1,30 @@
 <footer>
-<div class="footer-container">
-    <div class="footer-logo">
-        <a href="#">Politique de confidentialité</a>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <a href="{{ path('app_main') }}">
+                <img
+                        src="{{ asset('assets/img/logo/logo.png') }}"
+                        alt="Logo du restaurant"
+                        class="nav-logo footer-logo">
+            </a>
+        </div>
+        <div class="footer-copyright">
+            <p>Tous droits réservés - © 2023</p>
+            <a
+                    href="https://web-luberon.com"
+                    target="_blank"
+                    rel=" noopener noreferrer">
+                Créer par AirV
+            </a>
+        </div>
+
+        <div class="footer-nav">
+            <a
+                    href="{{ path('app_mentions_legales') }}"
+                    target="_blank"
+                    rel=" noopener noreferrer">
+                Mentions légales
+            </a>
+        </div>
     </div>
-    <div class="footer-nav">
-        <a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
-    </div>
-</div>
 </footer>
