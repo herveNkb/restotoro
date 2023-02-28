@@ -117,13 +117,14 @@ h3 {
     }
 }
 
-p {
+p, a {
     font-size: 1rem;
     line-height: 1.8;
     font-family: Gentium Book Basic, serif;
 }
 
 /* II) "navbar & footer" */
+/* navbar */
 .nav-logo {
     height: 30px;
     width: auto;
@@ -158,15 +159,19 @@ p {
     }
 }
 
-.footer-container {
+
+
+/* footer */
+.footer-container{
     display: flex;
-    justify-content: space-between;
+   flex-direction: column;
+    padding: 20px 50px;
 }
 
 .footer-container > div {
-    width: 50%;
+    width: 100%;
     text-align: center;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .footer-container a {
@@ -175,6 +180,58 @@ p {
 
 .footer-container a:hover {
     color: #dd992c;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 800px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-container > div {
+        width: 33%;
+        padding-bottom: 0;
+    }
+
+    .footer-logo {
+        height: 40px;
+        width: auto;
+    }
+
+    .footer-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .footer-container {
+        padding: 40px 100px;
+    }
+
+    .footer-logo {
+        height: 50px;
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .footer-container {
+        padding: 40px 250px;
+    }
+
+    .footer-logo {
+        height: 60px;
+        width: auto;
+    }
+
 }
 
 /* III) Boutons */
