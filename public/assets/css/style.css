@@ -6,7 +6,7 @@ II) "navbar & footer"
 III) Boutons
 IV) Formulaire de connexion
 V) Formulaire d'enregistrement
-VI) Formule de réinitialisation de mot de passe
+VI) Formulaire de réinitialisation de mot de passe
 VII) Page de reinitialiser-le-mot-de-passe/envoi-email
 VIII) Page d'acueil
 IX) Page des mentions légales
@@ -21,6 +21,7 @@ body {
 a {
     color: #b6863a;
 }
+
 a:hover {
     color: #dd992c;
 }
@@ -231,7 +232,6 @@ p, a {
         height: 60px;
         width: auto;
     }
-
 }
 
 /* III) Boutons */
@@ -370,7 +370,7 @@ label {
     }
 }
 
-/* VI) Formule de réinitialisation de mot de passe */
+/* VI) Formulaire de réinitialisation de mot de passe */
 .container-form-reset-password {
     margin-top: 50px;
 }
@@ -410,7 +410,7 @@ label {
 
 .text-check-email a {
     text-decoration: none;
-    color: #2632A8;
+    font-size: 1.5rem;
 }
 
 @media screen and (min-width: 800px) {
