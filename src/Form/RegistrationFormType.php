@@ -33,7 +33,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/',
-                    "Il faut un mot de passe de 12 caractères minimum avec une majuscule, une minuscule, un chiffre et un caractère spécial")
+                    "Il faut un mot de passe de 12 caractères, avec au minimum une majuscule, une minuscule, un chiffre et un caractère spécial")
                 ],
             ])
         ;
