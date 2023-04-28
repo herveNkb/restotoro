@@ -8,18 +8,17 @@
         <h1>Connectez-vous !</h1>
         <form class="form form-login" method="post">
             <div class="d-flex justify-content-center align-items-center">
-            {% if error %}
-                <div class="alert alert-danger text-center">
-                    {{ error.messageKey|trans(error.messageData, 'security') }}
-                </div>
-            {% endif %}
+                {% if error %}
+                    <div class="alert alert-danger text-center">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
             </div>
             {% if app.user %}
-                <div class="mb-3">
-                    Vous êtes connecté en tant que {{ app.user.userIdentifier }},
-                    <a href="{{ path('app_logout') }}">
-                        Déconnexion
-                    </a>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="text-center text-light">
+                        Vous êtes déjà connecté(e) en tant que {{ app.user.userIdentifier }}
+                    </div>
                 </div>
             {% endif %}
             <div>
