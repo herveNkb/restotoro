@@ -50,11 +50,15 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Reservations::class)]
     private Collection $reservations;
 
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Images::class)]
+    private Collection $images;
+
     public function __construct()
     {
         $this->formulas = new ArrayCollection();
         $this->menuses = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -266,6 +270,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($reservation->getUsers() === $this) {
                 $reservation->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getUsers() === $this) {
+                $image->setUsers(null);
             }
         }
 
