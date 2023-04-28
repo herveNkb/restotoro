@@ -35,29 +35,29 @@ class Images
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getImageTitle(): ?string
     {
-        return $this->image_title;
+        return $this -> image_title;
     }
 
     public function setImageTitle(string $image_title): self
     {
-        $this->image_title = $image_title;
+        $this -> image_title = $image_title;
 
         return $this;
     }
 
     public function getImageName(): ?string
     {
-        return $this->image_name;
+        return $this -> image_name;
     }
 
     public function setImageName(string $image_name): self
     {
-        $this->image_name = $image_name;
+        $this -> image_name = $image_name;
 
         return $this;
     }
@@ -80,24 +80,24 @@ class Images
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this->updated_at;
+        return $this -> updated_at;
     }
 
     public function setUpdatedAt(\DateTimeImmutable $updated_at): self
     {
-        $this->updated_at = $updated_at;
+        $this -> updated_at = $updated_at;
 
         return $this;
     }
 
     public function getUsers(): ?Users
     {
-        return $this->users;
+        return $this -> users;
     }
 
     public function setUsers(?Users $users): self
     {
-        $this->users = $users;
+        $this -> users = $users;
 
         return $this;
     }
