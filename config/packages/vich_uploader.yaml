@@ -1,8 +1,13 @@
 vich_uploader:
     db_driver: orm
+    twig: true
+    metadata:
+        type: attribute
 
-    #mappings:
-    #    products:
-    #        uri_prefix: /images/products
-    #        upload_destination: '%kernel.project_dir%/public/images/products'
-    #        namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    mappings:
+        featured_image:
+            uri_prefix: /resTotoro/public/uploads/images # path to the public image directory
+            upload_destination: '%kernel.project_dir%/public/uploads/images' # path to the private image directory
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer # this is optional and will default to the default namer
+
+            delete_on_update: true # Delete the old image when a new one is uploaded
