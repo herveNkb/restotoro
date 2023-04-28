@@ -3,13 +3,15 @@
 {% block title %}Enregistrement{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    {# We display the flash message, if the regitration has a problem #}
+    <div class="d-flex justify-content-center align-items-center">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+    </div>
 
     <main class="container-form">
         <h1 class="form-title">Enregistrement</h1>
-
         <div class="form form-register-tablet container-pc">
             {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.email, {
@@ -20,7 +22,7 @@
                 row_attr: {
                     class: 'form-floating'
                 }
-                }) }}
+            }) }}
             {{ form_row(registrationForm.plainPassword, {
                 label: 'Mot de passe',
                 attr: {
