@@ -16,22 +16,22 @@ class Images
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image_title = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    public ?string $image_title = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image_name = null;
 
     #[Vich\UploadableField(mapping: 'featured_image', fileNameProperty: 'image_name')]
     // featured_images is the name of the mapping in config/packages/vich_uploader.yaml
     private ?File $imageFile = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $users = null;
+    private ?Users $user = null;
 
     public function getId(): ?int
     {
@@ -40,24 +40,24 @@ class Images
 
     public function getImageTitle(): ?string
     {
-        return $this -> image_title;
+        return $this->image_title;
     }
 
     public function setImageTitle(string $image_title): self
     {
-        $this -> image_title = $image_title;
+        $this->image_title = $image_title;
 
         return $this;
     }
 
     public function getImageName(): ?string
     {
-        return $this -> image_name;
+        return $this->image_name;
     }
 
-    public function setImageName(string $image_name): self
+    public function setImageName(?string $image_name): self
     {
-        $this -> image_name = $image_name;
+        $this->image_name = $image_name;
 
         return $this;
     }
@@ -80,24 +80,24 @@ class Images
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this -> updated_at;
+        return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updated_at): self
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
-        $this -> updated_at = $updated_at;
+        $this->updated_at = $updated_at;
 
         return $this;
     }
 
-    public function getUsers(): ?Users
+    public function getUser(): ?Users
     {
-        return $this -> users;
+        return $this->user;
     }
 
-    public function setUsers(?Users $users): self
+    public function setUser(?Users $user): self
     {
-        $this -> users = $users;
+        $this->user = $user;
 
         return $this;
     }
