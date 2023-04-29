@@ -288,7 +288,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->images->contains($image)) {
             $this->images->add($image);
-            $image->setUsers($this);
+            $image->setUser($this);
         }
 
         return $this;
@@ -298,8 +298,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getUsers() === $this) {
-                $image->setUsers(null);
+            if ($image->getUser() === $this) {
+                $image->setUser(null);
             }
         }
 
