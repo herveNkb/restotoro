@@ -102,19 +102,19 @@ h3 {
 
 @media screen and (min-width: 800px ) {
     h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 }
 
 @media screen and (min-width: 1200px) {
     h3 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 }
 
 @media screen and (min-width: 1920px) {
     h3 {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
 }
 
@@ -471,6 +471,8 @@ label {
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 50px;
+    padding: 5px;
+    text-align: center;
 }
 
 .image-home {
@@ -481,19 +483,21 @@ label {
 }
 
 .image-title-container {
-    display: none;
     position: absolute;
-    width: 75%;
-    left: 12.5%;
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    background-color: #0b5ed7;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    /* Force to use the `visibility` property because `display` is taken above*/
+    visibility: hidden;
 }
 
 .image-title {
     margin: 0;
     color: white;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (min-width: 800px) {
@@ -544,7 +548,6 @@ label {
         height: 400px;
     }
 }
-
 
 /* IX) Page des mentions légales */
 .legal-notice {
