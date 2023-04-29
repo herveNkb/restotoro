@@ -11,11 +11,11 @@ imageContainers.forEach(container => {
 
     // Add the first event listener on the container element.
     container.addEventListener('mouseenter', () => {
-        titleContainer.style.display = 'block';
+        titleContainer.style.visibility = 'visible';
     });
 
     // Add the second event listener on the container element.
     container.addEventListener('mouseleave', () => {
-        titleContainer.style.display = 'none';
+        titleContainer.style.visibility = 'hidden';
     });
 });
