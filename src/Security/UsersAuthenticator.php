@@ -46,7 +46,7 @@ class UsersAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // Redirige le "user" vers la page d' accueil (app_main), un fois l' authentification réussi
+        // Redirects the "user" to the home page (app_main), once authentication is successful
         return new RedirectResponse($this->urlGenerator->generate('app_main'));
     }
 
