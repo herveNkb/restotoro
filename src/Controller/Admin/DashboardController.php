@@ -5,6 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Categories;
 use App\Entity\Images;
 use App\Entity\Menus;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -33,5 +36,12 @@ class DashboardController extends AbstractDashboardController
          yield MenuItem::linkToCrud('Carte des plats', 'fas fa-utensils', Menus::class);
          yield MenuItem::linkToCrud('Catégories des plats', 'fas fa-list', Categories::class);
         yield MenuItem ::linkToUrl('Retour à l\'accueil', 'fas fa-home', $this -> generateUrl('app_main'));
+    }
+
+    // Add "consulter" button on admin index page
+    public function configureActions(): Actions
+    {
+        return parent ::configureActions()
+            -> add(Crud::PAGE_INDEX, Action::DETAIL);
     }
 }
