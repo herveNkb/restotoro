@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MenusRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MenusRepository::class)]
@@ -21,6 +22,9 @@ class Menus
 
     #[ORM\ManyToOne(inversedBy: 'menuses')]
     private ?Users $users = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $dish_description = null;
 
     public function getId(): ?int
     {
@@ -59,6 +63,18 @@ class Menus
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getDishDescription(): ?string
+    {
+        return $this->dish_description;
+    }
+
+    public function setDishDescription(?string $dish_description): self
+    {
+        $this->dish_description = $dish_description;
 
         return $this;
     }
