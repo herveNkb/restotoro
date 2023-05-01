@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre carte{% endblock %}
+
+{% block body %}
+    <main class="menu-container">
+        <h1 class=" menu-title">Notre carte</h1>
+
+        <section>
+            {% for category, menus in groupedMenus %}
+                <h2 class="menu-category-subtitle">{{ category }}</h2>
+                <ul class="menu-list">
+                    {# cette boucle permet d'afficher les menus selon la catégorie qui leur est associée #}
+                    {% for menu in menus %}
+                        <li class="menu-text">
+                            <strong>{{ menu.dishTitle }}</strong> - {{ menu.dishPrice }} €
+                            <p>{{ menu.dishdescription }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </section>
+        {# cette boucle permet de grouper les menus par catégorie  #}
+
+    </main>
+
+{% endblock %}
