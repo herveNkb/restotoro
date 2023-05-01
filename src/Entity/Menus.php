@@ -26,6 +26,9 @@ class Menus
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $dish_description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'menus')]
+    private ?Categories $categories = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Menus
     public function setDishDescription(?string $dish_description): self
     {
         $this->dish_description = $dish_description;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }
