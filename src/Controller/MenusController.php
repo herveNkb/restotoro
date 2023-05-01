@@ -13,11 +13,21 @@ class MenusController extends AbstractController
     #[Route('/notre-carte', name: 'app_menus')]
     public function index(ManagerRegistry $doctrine): Response
     {
-        // Retrieve data from database
+        // Retrieve all menu table data
         // Replaces getDoctrine() which is deprecated
         $menus = $doctrine -> getRepository(Menus::class) -> findAll();
+
+        //  Tableau qui sert à grouper les menus par catégorie
+        $groupedMenus = [];
+        // Boucle qui itére sur les menus récupérés précédemment avec la méthode findAll()
+        foreach ($menus as $menu) {
+            // récupère le nom de la catégorie du menu
+            $categoryName = $menu -> getCategories() -> getDishCategorie();
+            // Ajoute le menu dans le tableau $groupedMenus
+            $groupedMenus[$categoryName][] = $menu;
+        }
         return $this->render('menus/index.html.twig', [
-            'menus' => $menus
+            'groupedMenus' => $groupedMenus
         ]);
     }
 }
