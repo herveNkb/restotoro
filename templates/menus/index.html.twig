@@ -13,8 +13,8 @@
                     {# cette boucle permet d'afficher les menus selon la catégorie qui leur est associée #}
                     {% for menu in menus %}
                         <li class="menu-text">
-                            <strong>{{ menu.dishTitle }}</strong> - {{ menu.dishPrice }} €
-                            <p>{{ menu.dishdescription }}</p>
+                            <p><strong>{{ menu.dishTitle }}</strong> - {{ menu.dishPrice }} €</p>
+                            <p><em>{{ menu.dishdescription }}</em></p>
                         </li>
                     {% endfor %}
                 </ul>
