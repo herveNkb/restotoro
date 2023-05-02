@@ -246,6 +246,12 @@ p, a {
     cursor: pointer;
 }
 
+/* Bouton de réservation */
+.btn-reservation-container {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 /* IV) Formulaire de connexion */
 .container-form {
     padding: 0 50px;
@@ -503,6 +509,10 @@ label {
     .image-home-container {
         width: 50%;
     }
+
+    .btn-reservation {
+        font-size: 2rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -536,6 +546,14 @@ label {
     .image-home {
         height: 400px;
     }
+
+    .btn-reservation-container {
+        margin-bottom: 100px;
+    }
+
+    .btn-reservation {
+        font-size: 2.5rem;
+    }
 }
 
 /*IX) Page "Notre carte"*/
@@ -556,12 +574,12 @@ label {
 .menu-list {
     list-style-type: none;
     text-align: center;
+    padding-bottom: 50px;
 }
 
 .menu-text {
     color: white;
     line-height: 2;
-    padding-bottom: 20px;
 }
 
 @media screen and (min-width: 800px) {
@@ -610,6 +628,10 @@ label {
 
     .menu-text {
         font-size: 1.5rem;
+    }
+
+    .menu-list {
+        padding-bottom: 100px;
     }
 }
 
