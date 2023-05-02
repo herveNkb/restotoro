@@ -17,10 +17,10 @@ class Openings
     private ?string $opening_day = null;
 
     #[ORM\Column(length: 25)]
-    private ?string $opening_open = null;
+    private ?string $opening_morning = null;
 
     #[ORM\Column(length: 25)]
-    private ?string $opening_close = null;
+    private ?string $opening_afternoon = null;
 
     #[ORM\ManyToOne(inversedBy: 'openings')]
     #[ORM\JoinColumn(nullable: false)]
@@ -43,26 +43,26 @@ class Openings
         return $this;
     }
 
-    public function getOpeningOpen(): ?string
+    public function getOpeningMorning(): ?string
     {
-        return $this->opening_open;
+        return $this->opening_morning;
     }
 
-    public function setOpeningOpen(string $opening_open): self
+    public function setOpeningMorning(string $opening_morning): self
     {
-        $this->opening_open = $opening_open;
+        $this->opening_morning = $opening_morning;
 
         return $this;
     }
 
-    public function getOpeningClose(): ?string
+    public function getOpeningAfternoon(): ?string
     {
-        return $this->opening_close;
+        return $this->opening_afternoon;
     }
 
-    public function setOpeningClose(string $opening_close): self
+    public function setOpeningAfternoon(string $opening_afternoon): self
     {
-        $this->opening_close = $opening_close;
+        $this->opening_afternoon = $opening_afternoon;
 
         return $this;
     }
