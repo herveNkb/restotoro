@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos formules{% endblock %}
+
+{% block body %}
+
+    <main class="formulas-container">
+        <h1 class="formulas-h1">Nos différentes formules</h1>
+        {% for formula in formulas %}
+            <section class="formulas-card">
+                <div class="formulas-card-content">
+                    <h2 class="formulas-title">{{ formula.formulaTitle }}</h2>
+                    <p class="formulas-price">tarif : {{ formula.formulaPrice }}€</p>
+                    <p class="formulas-content">{{ formula.description | raw }}</p>
+                </div>
+            </section>
+        {% endfor %}
+        {% include "_partials/_booking-btn.html.twig" %}
+    </main>
+
+{% endblock %}
