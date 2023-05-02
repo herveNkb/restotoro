@@ -6,7 +6,8 @@
     <main class="menu-container">
         <h1 class=" menu-title">Notre carte</h1>
 
-        <section>
+        <section class="list-menu-container">
+            {# cette boucle permet de grouper les menus par catégorie  #}
             {% for category, menus in groupedMenus %}
                 <h2 class="menu-category-subtitle">{{ category }}</h2>
                 <ul class="menu-list">
@@ -20,8 +21,8 @@
                 </ul>
             {% endfor %}
         </section>
-        {# cette boucle permet de grouper les menus par catégorie  #}
-
+        {# booking button template #}
+        {% include "_partials/_reservation-btn.html.twig" %}
     </main>
 
 {% endblock %}
