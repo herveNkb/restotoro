@@ -14,7 +14,7 @@ class FormulasController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
         // Retrieve data from database
-        // Replaces getDoctrine() which is deprecated
+        // Replaces getDoctrine() which is deprecated since Symfony 5.3
         $formulas = $doctrine -> getRepository(Formulas::class) -> findAll();
         return $this->render('formulas/index.html.twig', [
             'formulas' => $formulas
