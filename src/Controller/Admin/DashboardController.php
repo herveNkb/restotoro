@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
+use App\Entity\Formulas;
 use App\Entity\Images;
 use App\Entity\Menus;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -35,6 +36,7 @@ class DashboardController extends AbstractDashboardController
          yield MenuItem::linkToCrud('Images page d\'accueil', 'fas fa-image', Images::class);
          yield MenuItem::linkToCrud('Carte des plats', 'fas fa-utensils', Menus::class);
          yield MenuItem::linkToCrud('Catégories des plats', 'fas fa-list', Categories::class);
+         yield MenuItem::linkToCrud('Formules de la carte', 'fas fa-clipboard', Formulas::class);
         yield MenuItem ::linkToUrl('Retour à l\'accueil', 'fas fa-home', $this -> generateUrl('app_main'));
     }
 
