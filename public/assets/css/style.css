@@ -10,6 +10,7 @@ VI) Formulaire de réinitialisation de mot de passe
 VII) Page de reinitialiser-le-mot-de-passe/envoi-email
 VIII) Page d'acueil
 IX) Page "Notre carte"
+X) Page "Nos menus"
 End) Page des mentions légales
 */
 
@@ -634,6 +635,83 @@ label {
         padding-bottom: 100px;
     }
 }
+
+/*X) Page "Nos menus"*/
+.formulas-container {
+    margin: 0 30px 50px;
+}
+
+.formulas-h1 {
+    margin-bottom: 70px;
+}
+
+.formulas-card {
+    background-color: #0f3141;
+    border-radius: 7px;
+    margin-bottom: 70px;
+}
+
+.formulas-card-content {
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.formulas-title {
+    padding-bottom: 20px;
+}
+
+.formulas-price {
+    padding-bottom: 30px;
+}
+
+@media screen and (min-width: 800px) {
+    .formulas-container {
+        margin: 0 100px 50px;
+    }
+
+    .formulas-h1 {
+        margin-bottom: 100px;
+    }
+
+    .formulas-card {
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .formulas-container {
+        margin: 0 200px 50px;
+    }
+
+    .formulas-h1 {
+        margin-bottom: 120px;
+    }
+
+    .formulas-card {
+        margin-bottom: 120px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .formulas-container {
+        margin: 0 400px 100px;
+    }
+
+    .formulas-h1 {
+        margin-bottom: 150px;
+    }
+
+    .formulas-card {
+        margin-bottom: 150px;
+    }
+}
+
+
+
+
+
+
 
 
 
