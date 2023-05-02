@@ -6,6 +6,7 @@ use App\Entity\Categories;
 use App\Entity\Formulas;
 use App\Entity\Images;
 use App\Entity\Menus;
+use App\Entity\Openings;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -37,6 +38,7 @@ class DashboardController extends AbstractDashboardController
          yield MenuItem::linkToCrud('Carte des plats', 'fas fa-utensils', Menus::class);
          yield MenuItem::linkToCrud('Catégories des plats', 'fas fa-list', Categories::class);
          yield MenuItem::linkToCrud('Formules de la carte', 'fas fa-clipboard', Formulas::class);
+         yield MenuItem::linkToCrud('Horaires d\'ouverture', 'fas fa-clock', Openings::class);
         yield MenuItem ::linkToUrl('Retour à l\'accueil', 'fas fa-home', $this -> generateUrl('app_main'));
     }
 
