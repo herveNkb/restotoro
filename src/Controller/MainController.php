@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Images;
+use App\Entity\Openings;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,8 +17,17 @@ class MainController extends AbstractController
         // Retrieve data from database
         // Replaces getDoctrine() which is deprecated since Symfony 5.3
         $images = $doctrine -> getRepository(Images::class) -> findAll();
-        return $this->render('main/index.html.twig', [
-            'images' => $images
+
+        // Retrieve the opening hours from the database
+        $openings = $doctrine -> getRepository(Openings::class) -> findAll();
+        // Render the view of the opening hours table with "renderView" method
+        $openingsView = $this -> renderView('_partials/_openings.html.twig', [
+            'openings' => $openings
+        ]);
+
+        return $this -> render('main/index.html.twig', [
+            'images' => $images,
+            'openingsView' => $openingsView
         ]);
     }
 }
