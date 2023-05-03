@@ -49,9 +49,11 @@
                             <a class="nav-link" href="{{ path('admin') }}">Back-office</a>
                         </li>
                     {% endif %}
+                    {% if is_granted('ROLE_USER') %}
                     <li class="nav-item pb-3 pb-lg-0 pe-lg-2">
                         <a class="nav-link" href="#">Mon compte</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item pb-3 pb-lg-0 pe-lg-2">
                         <a class="nav-link" href="{{ path('app_logout') }}">Déconnecter</a>
                     </li>
