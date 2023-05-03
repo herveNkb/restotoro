@@ -1,0 +1,20 @@
+<h3 class="openings-title">Horaires d'ouverture :</h3>
+
+{% for opening in openings %}
+    <section class="openings-container">
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <p>{{ opening.openingDay }}</p>
+                </td>
+                <td>
+                    <p>{{ opening.openingMorning }}</p>
+                    <p>{{ opening.openingAfternoon }}</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+{% endfor %}
