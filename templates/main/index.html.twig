@@ -20,13 +20,17 @@
                             alt="Image de {{ image.image_title }}"
                     >
                     <div class="image-title-container">
-                        <h3 class="image-title">{{ image.image_title }}</h3>
+                        <h2 class="image-title">{{ image.image_title }}</h2>
                     </div>
                 </div>
             {% endfor %}
         </section>
         {# booking button template #}
         {% include "_partials/_booking-btn.html.twig" %}
+
+        {# openings template for schedule #}
+        {# The "raw" filter prevents HTML escaping of the timetable view #}
+        {{ openingsView|raw }}
     </main>
 {% endblock %}
 
