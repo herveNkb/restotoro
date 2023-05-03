@@ -226,12 +226,19 @@ p, a {
 }
 
 /*II-c) Schedule*/
-.openings-title, .openings-container{
+.openings-title, .openings-container {
     text-align: center;
 }
+
 .openings-day {
     display: inline-block;
     margin: 0 20px 30px;
+    color: white;
+}
+
+.openings-day-text {
+    font-style: italic;
+    text-decoration: underline;
 }
 
 /* III) Boutons */
@@ -718,16 +725,6 @@ label {
         margin-bottom: 150px;
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /* End) Page des mentions légales */
