@@ -15,7 +15,12 @@
                 </div>
             </section>
         {% endfor %}
+        {# booking button template #}
         {% include "_partials/_booking-btn.html.twig" %}
+
+        {# openings template for schedule #}
+        {# The "raw" filter prevents HTML escaping of the timetable view #}
+        {{ openingsView|raw }}
     </main>
 
 {% endblock %}

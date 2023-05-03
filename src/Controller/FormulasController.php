@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Formulas;
+use App\Entity\Openings;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,8 +17,17 @@ class FormulasController extends AbstractController
         // Retrieve data from database
         // Replaces getDoctrine() which is deprecated since Symfony 5.3
         $formulas = $doctrine -> getRepository(Formulas::class) -> findAll();
+
+        // Retrieve the opening hours from the database
+        $openings = $doctrine -> getRepository(Openings::class) -> findAll();
+        // Render the view of the opening hours table with "renderView" method
+        $openingsView = $this -> renderView('_partials/_openings.html.twig', [
+            'openings' => $openings
+        ]);
+
         return $this->render('formulas/index.html.twig', [
-            'formulas' => $formulas
+            'formulas' => $formulas,
+            'openingsView' => $openingsView
         ]);
     }
 }
