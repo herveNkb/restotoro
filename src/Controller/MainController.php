@@ -14,7 +14,7 @@ class MainController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
         // Retrieve data from database
-        // Replaces getDoctrine() which is deprecated
+        // Replaces getDoctrine() which is deprecated since Symfony 5.3
         $images = $doctrine -> getRepository(Images::class) -> findAll();
         return $this->render('main/index.html.twig', [
             'images' => $images
