@@ -33,17 +33,17 @@ class UsersCrudController extends AbstractCrudController
     }
 
 
-    // Prevents the admin from deleting their own account
+    // Prevents the admin from deleting their own account.
     public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         // Retrieve logged in user
-        $currentUser = $this->getUser();
+        $currentUser = $this -> getUser();
         // checks that the logged in user is not deleting their own account
         if ($entityInstance === $currentUser) {
 
             throw new AccessDeniedException('Vous ne pouvez pas supprimer votre propre compte.');
         }
         // If this is not the case, we delete the account normally
-        parent::deleteEntity($entityManager, $entityInstance);
+        parent ::deleteEntity($entityManager, $entityInstance);
     }
 }
