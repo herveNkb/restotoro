@@ -20,8 +20,9 @@ final class Version20230501071958 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE categories (id INT AUTO_INCREMENT NOT NULL, dish_category VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE categories CHANGE dish_category dish_categorie VARCHAR(50) NOT NULL');
-        $this->addSql('ALTER TABLE menus DROP categories_id');
+//       $this->addSql('ALTER TABLE menus DROP categories_id');
     }
 
     public function down(Schema $schema): void
