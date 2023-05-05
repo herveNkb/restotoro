@@ -6,6 +6,7 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -34,6 +35,26 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
                     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/',
                     "Il faut un mot de passe de 12 caractères, avec au minimum une majuscule, une minuscule, un chiffre et un caractère spécial")
+                ],
+            ])
+            ->add('name', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'Nom'
+                ],
+                'constraints' => [
+                    new Regex('/^[a-zA-Z]+$/',
+                        "Le prénom ne doit contenir que des lettres, sans accents")
+                ],
+            ])
+            ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'placeholder' => 'Prénom'
+                ],
+                'constraints' => [
+                    new Regex('/^[a-zA-Z]+$/',
+                        "Le nom ne doit contenir que des lettres, sans accents")
                 ],
             ])
         ;
