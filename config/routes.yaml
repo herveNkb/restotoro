@@ -1,12 +1,3 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-app_admin:
-  path: '/admin'
-  controller: App\Controller\DashboardController::index'
-  methods: ['GET']
-
-app_user:
-  path: '/profil'
-  controller: App\Controller\UsersDashboardController::index'
-  methods: ['GET']
