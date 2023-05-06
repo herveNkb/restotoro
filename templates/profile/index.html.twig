@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue {{ app.user.firstName }} {{ app.user.name }}{% endblock %}
+{% block body %}
+{#{% include '_partials/_profile-nav.html.twig' %}#}
+
+    <div class="d-flex justify-content-center align-items-center">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    <h1 style="margin-bottom: 150px">Page de profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+
+    <div class="container" style="text-align: center">
+        <div class="fields-container" >
+            <div>Nom :</div>
+            <div>{{ app.user.name }}</div>
+        </div>
+        <div class="fields-container">
+            <div>Prénom :</div>
+            <div>{{ app.user.firstName }}</div>
+        </div>
+        <div class="fields-container">
+            <div>Email</div>
+            <div>{{ app.user.email }}</div>
+        </div>
+        <div class="fields-container">
+            <div>Nombre de convives :</div>
+            <div>{{ app.user.defaultCustomerNumber }}</div>
+        </div>
+        <div class="fields-container" style="margin-bottom: 80px">
+            <div>Allergies :</div>
+            <div>{{ app.user.defaultAllergies }}</div>
+        </div>
+        <div class="btn-reservation-container ">
+            <a href="{{ path('app_profile_edit') }}" class="btn-reservation btn-form">Modifier le profil</a>
+        </div>
+        <div class="btn-reservation-container ">
+            <a href="{{ path('app_profile_edit_password') }}" class="btn-reservation btn-form">Modifier le mot de passe</a>
+        </div>
+    </div>
+{% endblock %}
