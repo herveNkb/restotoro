@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil de {{ app.user.firstName }} {{ app.user.name }}{% endblock %}
+{% block body %}
+
+
+    <h1 style="margin-bottom: 150px">Modification du profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+
+    <div class="container" style="text-align: center">
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Submit</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
