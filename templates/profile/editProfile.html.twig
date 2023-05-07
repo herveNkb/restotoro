@@ -3,13 +3,60 @@
 {% block title %}Modification du profil de {{ app.user.firstName }} {{ app.user.name }}{% endblock %}
 {% block body %}
 
+    <main class="container-form">
+        <h1 style="margin-bottom: 150px">Modification du profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+        <div class="form form-register-tablet container-pc">
+            {{ form_start(form) }}
+            {{ form_row(form.name, {
+                label: 'Nom',
+                attr: {
+                    placeholder: 'Nom'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.first_name, {
+                label: 'Prénom',
+                attr: {
+                    placeholder: 'Prénom'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.email, {
+                label: 'Email',
+                attr: {
+                    placeholder: 'Email'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.default_allergies, {
+                label: 'Allergies - (Séparez les allergies par un trait d\'union)',
+                attr: {
+                    placeholder: 'Allergies'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.default_customer_number, {
+                label: 'Nombre de couverts',
+                attr: {
+                    placeholder: 'Nombre de couverts'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            <div class="container-btn-form">
+                <button class="btn-reservation btn-form btn-form-position" type="submit">Modifier</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </main>
 
-    <h1 style="margin-bottom: 150px">Modification du profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
-
-    <div class="container" style="text-align: center">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn-reservation btn-form" type="submit">Modifier</button>
-        {{ form_end(form) }}
-    </div>
 {% endblock %}
