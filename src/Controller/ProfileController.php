@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UsersRepository;
 
 class ProfileController extends AbstractController
 {
@@ -23,10 +24,14 @@ class ProfileController extends AbstractController
 
     // Modification du profil (hors mot de passe)
     #[Route('/mon-compte/modifier', name: 'app_profile_edit')]
-    public function editProfile(Request $request, ManagerRegistry $doctrine): Response
+    public function editProfile(Request $request, ManagerRegistry $doctrine, UsersRepository $userRepository): Response
     {
         // Récupération de l'utilisateur connecté
         $user = $this->getUser();
+
+        // Récupération des données de l'utilisateur depuis la base de données
+        $userData = $userRepository->find($user->getId());
+
         // Création du formulaire
         $form = $this->createForm(EditProfileType::class, $user);
         // Traitement du formulaire
@@ -68,7 +73,7 @@ class ProfileController extends AbstractController
         // Si le formulaire est soumis et valide (on vérifie que les deux mots de passe sont identiques)
         if($request -> isMethod('POST')) {
 
-            // On récupère les données du formulaire
+            // On récupère les données du formulaire.
             $user = $this->getUser();
             // On vérifie que les deux mots de passe sont identiques
             if($request->request->get('password') == $request->request->get('password2')) {
