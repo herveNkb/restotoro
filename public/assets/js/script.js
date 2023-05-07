@@ -19,3 +19,20 @@ imageContainers.forEach(container => {
         titleContainer.style.visibility = 'hidden';
     });
 });
+
+
+
+// Redimensionnement automatique de la hauteur du textarea en fonction de son contenu
+// pour le formulaire de modification de profil
+function autoResizeTextarea(element) {
+    element.style.height = 'auto';
+    element.style.height = element.scrollHeight + 'px';
+}
+
+const textarea = document.querySelector('.auto-resize');
+textarea.addEventListener('input', function() {
+    autoResizeTextarea(this);
+});
+
+// Appel initial de la fonction pour ajuster la hauteur du textarea au chargement de la page
+autoResizeTextarea(textarea);
