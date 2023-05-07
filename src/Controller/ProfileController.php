@@ -17,88 +17,77 @@ class ProfileController extends AbstractController
     #[Route('/mon-compte', name: 'app_profile')]
     public function index(): Response
     {
-        return $this->render('profile/index.html.twig', [
+        return $this -> render('profile/index.html.twig', [
             'controller_name' => 'ProfileController',
         ]);
     }
 
-    // Modification du profil (hors mot de passe)
+    // Profile modification (excluding password)
     #[Route('/mon-compte/modifier', name: 'app_profile_edit')]
     public function editProfile(Request $request, ManagerRegistry $doctrine, UsersRepository $userRepository): Response
     {
-        // Récupération de l'utilisateur connecté
-        $user = $this->getUser();
+        // Logged-in user recovery
+        $user = $this -> getUser();
 
-        // Récupération des données de l'utilisateur depuis la base de données
-        $userData = $userRepository->find($user->getId());
+        // Retrieving user data from database
+        $userRepository -> find($user -> getId());
 
-        // Création du formulaire
-        $form = $this->createForm(EditProfileType::class, $user);
-        // Traitement du formulaire
-        $form->handleRequest($request);
+        // Creation of the form
+        $form = $this -> createForm(EditProfileType::class, $user);
+        // Form processing
+        $form -> handleRequest($request);
 
-        // Si le formulaire est soumis et valide
-        if ($form->isSubmitted() && $form->isValid()){
-            // On récupère les données du formulaire
-            $user = $form->getData();
+        // If the form is submitted and valid
+        if ($form -> isSubmitted() && $form -> isValid()) {
+            // Retrieving form data
+            $user = $form -> getData();
 
-            // On enregistre les données en BDD
-            $doctrine->getManager()->persist($user);
-            // On envoie les données en BDD
-            $doctrine->getManager()->flush();
+            // Save and send data in database
+            $doctrine -> getManager() -> persist($user);
+            $doctrine -> getManager() -> flush();
 
-            // On affiche un message de confirmation
-            $this->addFlash('success', 'Votre profil a bien été modifié');
+            $this -> addFlash('success', 'Votre profil a bien été modifié');
 
-            // On redirige vers la page de profil
-            return $this->redirectToRoute('app_profile');
+            return $this -> redirectToRoute('app_profile');
 
         }
 
-        return $this->render('profile/editProfile.html.twig', [
+        return $this -> render('profile/editProfile.html.twig', [
             'controller_name' => 'ProfileController',
-            'form' => $form->createView(),
+            'form' => $form -> createView(),
         ]);
     }
 
 
-    // Modification du mot de passe
+    // Change password
     #[Route('/mon-compte/modifier/mot-de-passe', name: 'app_profile_edit_password')]
     public function editPassword(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
-        // Récupération de l'utilisateur connecté
-        $user = $this->getUser();
+        // Logged-in user recovery
+        $user = $this -> getUser();
 
-        // Traitement du formulaire
-        // Si le formulaire est soumis et valide (on vérifie que les deux mots de passe sont identiques)
-        if($request -> isMethod('POST')) {
+        // Form processing
+        // If the form is submitted and valid (we check that the two passwords are identical)
+        if ($request -> isMethod('POST')) {
+            // Verification that the two passwords are identical
+            if ($request -> request -> get('password') == $request -> request -> get('password2')) {
+                // Password recovery and hash
+                $user -> setPassword($passwordHasher -> hashPassword($user, $request -> request -> get('password')));
+                // Save and send data in database
+                $doctrine -> getManager() -> persist($user);
+                $doctrine -> getManager() -> flush();
 
-            // On récupère les données du formulaire.
-            $user = $this->getUser();
-            // On vérifie que les deux mots de passe sont identiques
-            if($request->request->get('password') == $request->request->get('password2')) {
-                // On récupère le mot de passe et on le hash
-                $user->setPassword($passwordHasher->hashPassword($user, $request->request->get('password')));
-                // On enregistre les données en BDD
-                $doctrine->getManager()->persist($user);
-                // On envoie les données en BDD
-                $doctrine->getManager()->flush();
-                $this->addFlash('success', 'Votre mot de passe a bien été modifié');
-                return $this->redirectToRoute('app_profile');
+                $this -> addFlash('success', 'Votre mot de passe a bien été modifié');
 
+                return $this -> redirectToRoute('app_profile');
 
             } else {
-                $this->addFlash('danger', 'Les mots de passe ne correspondent pas');
+                $this -> addFlash('danger', 'Les mots de passe ne correspondent pas');
             }
-
-
-            $doctrine->getManager()->persist($user);
         }
 
-
-        return $this->render('profile/editPassword.html.twig', [
+        return $this -> render('profile/editPassword.html.twig', [
             'controller_name' => 'ProfileController',
-//            'form' => $form->createView(),
         ]);
     }
 }
