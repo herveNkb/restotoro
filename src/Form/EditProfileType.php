@@ -34,14 +34,21 @@ class EditProfileType extends AbstractType
                 ],
             ])
             ->add('email', TextType::class, [
+                'label' => 'Email',
                 'empty_data' => '$options["data"]->getEmail() ?? null',
+                'constraints' => [
+                    new Regex('/^[^\s@]+@[^\s@]+\.[^\s@]+$/',
+                        "Veuillez entrer une adresse email valide.")
+                ],
             ])
             ->add('default_allergies', TextType::class,[
+                'label' => 'Allergies',
                 // vérifie si la valeur est null, si oui, on met une valeur par défaut
             'empty_data' =>  $defaultAllergies !== null ? $defaultAllergies : null,
                 'required' => false,
                 ])
             ->add('default_customer_number', IntegerType::class, [
+                'label' => 'Nombre de convives',
                 // vérifie si la valeur est null, si oui, on met une valeur par défaut
                 'empty_data' => $defaultCustomerNumber !== null ? $defaultCustomerNumber : null,
                 'required' => false,
