@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -43,8 +44,11 @@ class EditProfileType extends AbstractType
                         "Veuillez entrer une adresse email valide.")
                 ],
             ])
-            -> add('default_allergies', TextType::class, [
+            -> add('default_allergies', TextareaType::class, [
                 'label' => 'Allergies - (Séparez les allergies par un trait d\'union)',
+                'attr' => [
+                    'class' => 'auto-resize'
+                ],
                 // vérifie si la valeur est null, si oui, on met une valeur par défaut
                 'empty_data' => $defaultAllergies !== null ? $defaultAllergies : null,
                 'required' => false,
