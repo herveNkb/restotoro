@@ -27,7 +27,6 @@ class UsersCrudController extends AbstractCrudController
             yield TextField ::new('email', 'Email'),
             yield IntegerField ::new('default_customer_number', 'Nombre de convives'),
             yield TextareaField ::new('default_allergies', 'Allergies'),
-            yield TextField ::new('password', 'Mot de passe'), // à supprimer plus tard
             yield BooleanField ::new('is_verified', 'compte vérifié'),
         ];
     }
@@ -43,7 +42,7 @@ class UsersCrudController extends AbstractCrudController
 
             throw new AccessDeniedException('Vous ne pouvez pas supprimer votre propre compte.');
         }
-        // If this is not the case, we delete the account normally
+        // If this is not the case, delete the account normally
         parent ::deleteEntity($entityManager, $entityInstance);
     }
 }
