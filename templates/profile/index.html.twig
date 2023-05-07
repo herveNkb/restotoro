@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Bienvenue {{ app.user.firstName }} {{ app.user.name }}{% endblock %}
+
 {% block body %}
-{#{% include '_partials/_profile-nav.html.twig' %}#}
 
     <div class="d-flex justify-content-center align-items-center">
         {% for message in app.flashes('success') %}
@@ -10,34 +10,39 @@
         {% endfor %}
     </div>
 
-    <h1 style="margin-bottom: 150px">Page de profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+    <main>
+        <h1 class="profile-title">Profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+        <section class="profile-container">
+            <div class="profile-fields-container">
+                <p class="profile-label profile-first-data">Nom :</p>
+                <p class="profile-data">{{ app.user.name }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Prénom :</p>
+                <p class="profile-data">{{ app.user.firstName }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Email</p>
+                <p class="profile-data">{{ app.user.email }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Nombre de convives :</p>
+                <p class="profile-data">{{ app.user.defaultCustomerNumber }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Allergies :</p>
+                <p class="profile-data profile-last-data">{{ app.user.defaultAllergies }}</p>
+            </div>
 
-    <div class="container" style="text-align: center">
-        <div class="fields-container" >
-            <div>Nom :</div>
-            <div>{{ app.user.name }}</div>
-        </div>
-        <div class="fields-container">
-            <div>Prénom :</div>
-            <div>{{ app.user.firstName }}</div>
-        </div>
-        <div class="fields-container">
-            <div>Email</div>
-            <div>{{ app.user.email }}</div>
-        </div>
-        <div class="fields-container">
-            <div>Nombre de convives :</div>
-            <div>{{ app.user.defaultCustomerNumber }}</div>
-        </div>
-        <div class="fields-container" style="margin-bottom: 80px">
-            <div>Allergies :</div>
-            <div>{{ app.user.defaultAllergies }}</div>
-        </div>
-        <div class="btn-reservation-container ">
-            <a href="{{ path('app_profile_edit') }}" class="btn-reservation btn-form">Modifier le profil</a>
-        </div>
-        <div class="btn-reservation-container ">
-            <a href="{{ path('app_profile_edit_password') }}" class="btn-reservation btn-form">Modifier le mot de passe</a>
-        </div>
-    </div>
+            <div class="btn-reservation-wrapper">
+                <div class="btn-reservation-container">
+                    <a href="{{ path('app_profile_edit') }}" class="btn-reservation btn-form">Modifier le profil</a>
+                </div>
+                <div class="btn-reservation-container">
+                    <a href="{{ path('app_profile_edit_password') }}" class="btn-reservation btn-form">Modifier le mot de
+                        passe</a>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}
