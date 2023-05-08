@@ -1,23 +1,27 @@
 /* Index :
-I) Propriétés globales
-I-a) Polices
-I-b) "Headings" globales
+I) Global properties
+I-a) Fonts
+I-b) Global Headings
 II) Partials templates:
 II-a) Navbar
 II-b) Footer
 II-c) Schedule
-III) Boutons
-IV) Formulaire de connexion
-V) Formulaire d'enregistrement
-VI) Formulaire de réinitialisation de mot de passe
-VII) Page de reinitialiser-le-mot-de-passe/envoi-email
-VIII) Page d'acueil
-IX) Page "Notre carte"
-X) Page "Nos menus"
-End) Page des mentions légales
+III) Buttons
+IV) Login form
+V) Registration form
+VI) Form reset password
+VII) Reset-the-password-send-e-mail page
+VIII) Home page
+IX) "Notre carte" page
+X) "Nos menus" page
+XI) Profile modification page:
+XI-a) "Mon compte" page
+XI-b) Modification form profile page
+XI-c) Modification form password profil page
+End) Legal notice page
 */
 
-/* I) Propriétés globales */
+/* I) Global properties */
 body {
     background-color: #0d2935;
     color: #b6863a;
@@ -32,23 +36,23 @@ a:hover {
 }
 
 
-/* I-a) Polices */
+/* I-a) Fonts */
 /* h1 */
 @font-face {
     font-family: 'Volkhov', serif;
 }
 
-/* Sous-titres */
+/* Subtitles */
 @font-face {
     font-family: 'Patua One', cursive;
 }
 
-/* Textes */
+/* Text */
 @font-face {
     font-family: 'Gentium Book Basic', serif;
 }
 
-/* I-b) "font-size" globales */
+/* I-b) Global Headings */
 h1 {
     margin-top: 50px;
     font-size: 1.8rem;
@@ -241,8 +245,8 @@ p, a {
     text-decoration: underline;
 }
 
-/* III) Boutons */
-/* Boutons de formulaire */
+/* III) Buttons */
+/* Form buttons */
 .container-btn-form {
     text-align: right;
 }
@@ -266,13 +270,13 @@ p, a {
     cursor: pointer;
 }
 
-/* Bouton de réservation */
+/* Reservation button */
 .btn-reservation-container {
     text-align: center;
     margin-bottom: 60px;
 }
 
-/* IV) Formulaire de connexion */
+/* IV) Login form */
 .container-form {
     padding: 0 50px;
 }
@@ -332,16 +336,16 @@ p, a {
     }
 }
 
-/* V) Formulaire d'enregistrement */
+/* V) Registration form */
 .container-form {
     margin: 0 5px;
 }
 
-.form-control { /* Espace entre les "inputs"*/
+.form-control { /* Space between "inputs" */
     margin: 30px 0 30px;
 }
 
-.form { /* Texte "placeholder" */
+.form { /* Text "placeholder" */
     font-family: Gentium Book Basic, serif;
 }
 
@@ -354,7 +358,7 @@ label {
 }
 
 @media screen and (min-width: 800px) {
-    .form-control { /* Espace entre les "inputs"*/
+    .form-control { /* Space between "inputs" */
         margin: 50px 0 50px;
     }
 
@@ -374,7 +378,7 @@ label {
         margin-top: 150px;
     }
 
-    .form-label { /* Taille du texte des "placeholder" */
+    .form-label { /* Placeholder text size */
         font-size: 18px;
     }
 
@@ -383,7 +387,7 @@ label {
     }
 }
 
-/* VI) Formulaire de réinitialisation de mot de passe */
+/* VI) Form reset password */
 .container-form-reset-password {
     margin-top: 50px;
 }
@@ -400,7 +404,7 @@ label {
     }
 }
 
-/* VII) Page de reinitialiser-le-mot-de-passe/envoi-email*/
+/* VII) Reset-the-password-send-e-mail page*/
 .container-check-email {
     padding: 80px 25px 0;
 }
@@ -429,7 +433,7 @@ label {
 @media screen and (min-width: 800px) {
     .container-check-email {
         padding-top: 200px;
-        /*calc() -> 214px = height de la navbar et du footer*/
+        /*calc() -> 214px = height of navbar and footer*/
         height: calc(100vh - 214px);
     }
 
@@ -445,7 +449,7 @@ label {
 @media screen and (min-width: 1200px) {
     .container-check-email {
         text-align: center;
-        /*calc() -> 230px = height de la navbar et du footer*/
+        /*calc() -> 230px = height of navbar and footer*/
         height: calc(100vh - 230px);
         padding: 200px 50px 0;
     }
@@ -453,7 +457,7 @@ label {
 
 @media screen and (min-width: 1920px) {
     .container-check-email {
-        /*calc() -> 256px = height de la navbar et du footer*/
+        /*calc() -> 256px = height of navbar and footer*/
         height: calc(100vh - 256px);
         padding: 200px 50px 0;
     }
@@ -467,7 +471,7 @@ label {
     }
 }
 
-/*VIII) Page d'accueil */
+/*VIII) Home page */
 .alert-success {
     width: 300px;
     text-align: center;
@@ -576,7 +580,7 @@ label {
     }
 }
 
-/*IX) Page "Notre carte"*/
+/*IX) "Notre carte" page */
 .menu-container {
     margin: 0 30px 50px;
 }
@@ -655,7 +659,7 @@ label {
     }
 }
 
-/*X) Page "Nos menus"*/
+/*X) "Nos menus" page */
 .formulas-container {
     margin: 0 30px 50px;
 }
@@ -726,8 +730,178 @@ label {
     }
 }
 
+/* XI) Profile modification page: */
+/* XI-a) "Mon compte" page */
+.profile-container {
+    text-align: center;
+    margin: 0 30px 0;
+}
 
-/* End) Page des mentions légales */
+.profile-title {
+    margin: 80px 0 50px;
+}
+
+.profile-fields-container {
+    margin-bottom: 30px;
+}
+
+.profile-data {
+    color: white;
+}
+
+.profile-label {
+    font-size: 1.5rem;
+}
+
+.profile-last-data {
+    margin-bottom: 80px;
+}
+
+@media screen and (min-width: 800px) {
+    .profile-container {
+        margin: 0 50px 0;
+    }
+
+    .profile-title {
+        margin: 100px 0 50px;
+    }
+
+    .profile-label {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .profile-title {
+        margin-bottom: 80px;
+    }
+
+    .profile-container {
+        margin: 0 100px 0;
+    }
+
+    .profile-title {
+        margin: 120px 0 50px;
+    }
+
+    .profile-first-data {
+        margin-top: 150px;
+    }
+
+    .profile-label {
+        font-size: 2.5rem;
+    }
+
+    .profile-data {
+        font-size: 1.5rem;
+    }
+
+    .profile-last-data {
+        margin-bottom: 200px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .profile-title {
+        padding: 80px 0 100px;
+    }
+
+    .profile-first-data {
+        margin-top: 0;
+    }
+
+    .profile-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+        justify-items: center;
+        align-content: center;
+        margin: 0 150px 0;
+    }
+
+    .profile-fields-container:nth-child(5) {
+        grid-row: 3;
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+    }
+
+    .btn-reservation-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+        grid-row: 4;
+        grid-column: 1 / -1;
+    }
+
+    .btn-reservation-container {
+        justify-self: center;
+    }
+}
+
+/*XI-b) Modification form profile page */
+.btn-color {
+    background-color: #057570;
+}
+
+/*XI-c) Modification form password profil page */
+.profile-password-container {
+    text-align: center;
+}
+
+.profile-password-title {
+    margin: 80px 0;
+}
+
+.profile-password-form {
+    margin: 0 30px 0;
+}
+
+.form-control {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+@media screen and (min-width: 800px) {
+    .profile-password-title {
+        margin: 100px 0;
+    }
+
+    .profile-password-form {
+        margin: 0 100px;
+    }
+
+    .form-control-last {
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .profile-password-title {
+        margin: 160px 0;
+    }
+
+    .profile-password-form {
+        margin: 0 200px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .profile-password-title {
+        margin: 200px 100px
+    }
+
+    .profile-password-form {
+        margin: 0 400px;
+    }
+
+    .profile-password {
+        width: 700px;
+        display: inline-block;
+    }
+}
+
+
+/* End) Legal notice page */
 .legal-notice {
     color: #fff;
     margin: 80px 30px 150px 30px;

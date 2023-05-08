@@ -56,6 +56,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Openings::class)]
     private Collection $openings;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $first_name = null;
+
     public function __construct()
     {
         $this->formulas = new ArrayCollection();
@@ -336,6 +342,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $opening->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->first_name;
+    }
+
+    public function setFirstName(string $first_name): self
+    {
+        $this->first_name = $first_name;
 
         return $this;
     }

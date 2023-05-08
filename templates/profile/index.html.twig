@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue {{ app.user.firstName }} {{ app.user.name }}{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-center align-items-center">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    <main>
+        <h1 class="profile-title">Profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+        <section class="profile-container">
+            <div class="profile-fields-container">
+                <p class="profile-label profile-first-data">Nom :</p>
+                <p class="profile-data">{{ app.user.name }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Prénom :</p>
+                <p class="profile-data">{{ app.user.firstName }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Email</p>
+                <p class="profile-data">{{ app.user.email }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Nombre de convives :</p>
+                <p class="profile-data">{{ app.user.defaultCustomerNumber }}</p>
+            </div>
+            <div class="profile-fields-container">
+                <p class="profile-label">Allergies :</p>
+                <p class="profile-data profile-last-data">{{ app.user.defaultAllergies }}</p>
+            </div>
+
+            <div class="btn-reservation-wrapper">
+                <div class="btn-reservation-container">
+                    <a href="{{ path('app_profile_edit') }}" class="btn-reservation btn-form">Modifier le profil</a>
+                </div>
+                <div class="btn-reservation-container">
+                    <a href="{{ path('app_profile_edit_password') }}" class="btn-reservation btn-form">Modifier le mot de
+                        passe</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
