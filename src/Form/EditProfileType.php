@@ -17,7 +17,7 @@ class EditProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // Récupération des données de l'utilisateur et le stocke dans $options['data']
+        // Fetch user data and store it in options['data']
         $defaultAllergies = $options['data'] -> getDefaultAllergies();
         $defaultCustomerNumber = $options['data'] -> getDefaultCustomerNumber();
 
@@ -49,13 +49,13 @@ class EditProfileType extends AbstractType
                 'attr' => [
                     'class' => 'auto-resize'
                 ],
-                // vérifie si la valeur est null, si oui, on met une valeur par défaut
+                // checks if the value is null, if so, we put a default value
                 'empty_data' => $defaultAllergies !== null ? $defaultAllergies : null,
                 'required' => false,
             ])
             -> add('default_customer_number', IntegerType::class, [
                 'label' => 'Nombre de convives',
-                // vérifie si la valeur est null, si oui, on met une valeur par défaut
+                // checks if the value is null, if so, we put a default value
                 'empty_data' => $defaultCustomerNumber !== null ? $defaultCustomerNumber : null,
                 'required' => false,
                 'constraints' => [
@@ -75,7 +75,7 @@ class EditProfileType extends AbstractType
             ]);
     }
 
-    // Permet de lier le formulaire à la classe Users
+    // Allows you to bind the form to the Users class
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver -> setDefaults([
