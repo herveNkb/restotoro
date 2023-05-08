@@ -1,12 +1,11 @@
-// Selects all elements with class image-home-container
-// and stores them in the imageContainers constant.
+// LOCATION: "accueil" page
+// Display of image titles on mouse over .
+// Selects all elements with class image-home-container and stores them in the imageContainers constant.
 const imageContainers = document.querySelectorAll('.image-home-container');
 
-// We iterate over each element of the constant image Containers
-// with forEach and stores them in the constant container..
+// Iterate over each element of the constant imageContainers with forEach and stores them in the constant container.
 imageContainers.forEach(container => {
-    // Retrieves the element with the class image-title-container
-    // and stores it in the titleContainer constant.
+    // Retrieves the element with the class image-title-container and stores it in the titleContainer constant.
     const titleContainer = container.querySelector('.image-title-container');
 
     // Add the first event listener on the container element.
@@ -21,18 +20,21 @@ imageContainers.forEach(container => {
 });
 
 
+// LOCATION: "mon-compte/modifier" page
+// Automatically resize "Allergies" textarea height based on its content for edit profile form
+const textarea = document.querySelector('.auto-resize');
 
-// Redimensionnement automatique de la hauteur du textarea en fonction de son contenu
-// pour le formulaire de modification de profil
 function autoResizeTextarea(element) {
+    // Textarea height reset
     element.style.height = 'auto';
+    // Calculation of textarea height based on its content
     element.style.height = element.scrollHeight + 'px';
 }
 
-const textarea = document.querySelector('.auto-resize');
 textarea.addEventListener('input', function() {
-    autoResizeTextarea(this);
+    // Call of the function to adjust the height of the textarea on each input
+    autoResizeTextarea(this); // "(this)" represents the current textarea element
 });
 
-// Appel initial de la fonction pour ajuster la hauteur du textarea au chargement de la page
+// Initial function call to adjust textarea height on page load
 autoResizeTextarea(textarea);
