@@ -36,8 +36,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-utensils');
          yield MenuItem::linkToCrud('Images page d\'accueil', 'fas fa-image', Images::class);
-         yield MenuItem::linkToCrud('Carte des plats', 'fas fa-utensils', Menus::class);
-         yield MenuItem::linkToCrud('Catégories des plats', 'fas fa-list', Categories::class);
+        yield MenuItem::subMenu('gestion de la carte', 'fa fa-utensils')->setSubItems([
+          MenuItem::linkToCrud('Carte des plats', 'fas fa-utensils', Menus::class),
+          MenuItem::linkToCrud('Catégories des plats', 'fas fa-list', Categories::class)
+        ]);
          yield MenuItem::linkToCrud('Formules de la carte', 'fas fa-clipboard', Formulas::class);
          yield MenuItem::linkToCrud('Horaires d\'ouverture', 'fas fa-clock', Openings::class);
          yield MenuItem::linkToCrud('Profils', 'fas fa-user', Users::class);
