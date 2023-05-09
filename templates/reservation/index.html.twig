@@ -16,15 +16,7 @@
                     class: 'form-floating'
                 }
             }) }}
-            {{ form_row(form.dateReservation, {
-                label: 'Date de réservation',
-                attr: {
-                    placeholder: 'Date de réservation'
-                },
-                row_attr: {
-                    class: 'form-floating'
-                }
-            }) }}
+            {{ form_row(form.dateReservation) }}
             {{ form_row(form.hourReservation, {
                 label: 'Heure de réservation',
                 attr: {
@@ -46,7 +38,7 @@
             {{ form_row(form.allergies, {
                 label: 'Allergies - (Séparez les allergies par un trait d\'union)',
                 attr: {
-                    placeholder: 'Allergies - (Séparez les allergies par un trait d\'union)'
+                    placeholder: 'Nom'
                 },
                 row_attr: {
                     class: 'form-floating'
@@ -57,7 +49,7 @@
                 <button class="btn-reservation btn-form btn-form-position" type="submit">Réserver</button>
             </div>
             <div class="container-btn-form">
-                <a href="{{ path('app_main') }}" class="btn-color btn-form btn-form-position" type="submit">Annuler</a>
+                <a href="{{ path('app_main') }}" class="btn-color btn-form btn-form-position" type="submit"> Annuler </a>
             </div>
             {{ form_end(form) }}
         </div>
