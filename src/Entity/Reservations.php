@@ -17,9 +17,6 @@ class Reservations
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $date_hour = null;
-
     #[ORM\Column]
     private ?int $customer_number = null;
 
@@ -42,18 +39,6 @@ class Reservations
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDateHour(): ?\DateTimeInterface
-    {
-        return $this->date_hour;
-    }
-
-    public function setDateHour(\DateTimeInterface $date_hour): self
-    {
-        $this->date_hour = $date_hour;
 
         return $this;
     }
