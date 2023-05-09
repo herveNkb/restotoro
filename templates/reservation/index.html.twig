@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReservationController!{% endblock %}
+
+{% block body %}
+    <main class="container-form">
+        <h1 class="reservation-title">Réservation d'une table</h1>
+        <div class="form form-register-tablet container-pc">
+            {{ form_start(form) }}
+            {{ form_row(form.name, {
+                label: 'Nom',
+                attr: {
+                    placeholder: 'Nom'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.dateReservation, {
+                label: 'Date de réservation',
+                attr: {
+                    placeholder: 'Date de réservation'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.hourReservation, {
+                label: 'Heure de réservation',
+                attr: {
+                    placeholder: 'Heure de réservation'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.customerNumber, {
+                label: 'Nombre de convives',
+                attr: {
+                    placeholder: 'Nombre de convives'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(form.allergies, {
+                label: 'Allergies - (Séparez les allergies par un trait d\'union)',
+                attr: {
+                    placeholder: 'Allergies - (Séparez les allergies par un trait d\'union)'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+
+            <div class="container-btn-form">
+                <button class="btn-reservation btn-form btn-form-position" type="submit">Réserver</button>
+            </div>
+            <div class="container-btn-form">
+                <a href="{{ path('app_main') }}" class="btn-color btn-form btn-form-position" type="submit">Annuler</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </main>
+{% endblock %}
