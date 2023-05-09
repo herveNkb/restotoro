@@ -27,13 +27,14 @@ class ReservationFormType extends AbstractType
                         "Le nom ne doit contenir que des lettres, sans accents")
                 ],
             ])
-            -> add('dateReservation', DateType::class, [
+            ->add('dateReservation', DateType::class, [
                 'label' => 'Date de réservation',
                 'widget' => 'single_text',
-                'html5' => false,
-                'format' => 'dd-MM-yyyy',
+                'input' => 'datetime_immutable',
+                'html5' => true,
+                'format' => 'yyyy-MM-dd',
                 'attr' => [
-                    'class' => 'js-datepicker',
+                    'class' => 'form-datepicker',
                     'autocomplete' => 'off',
                 ],
             ])
