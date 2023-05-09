@@ -27,9 +27,8 @@ class ReservationController extends AbstractController
 
             $this->addFlash('success', 'Votre réservation a bien été enregistrée');
 
-            return $this->redirectToRoute('app_reservation');
+            return $this->redirectToRoute('app_main');
         }
-
 
         return $this->render('reservation/index.html.twig', [
             'controller_name' => 'ReservationController',
