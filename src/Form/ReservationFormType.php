@@ -3,22 +3,45 @@
 namespace App\Form;
 
 use App\Entity\Reservations;
+use App\Entity\ReservationsSettings;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\Regex;
+use DateTime;
+use DateTimeInterface;
+
 
 class ReservationFormType extends AbstractType
 {
+    private array $timeSlots;
+
+    public function __construct()
+    {
+        // Génération des créneaux horaires par tranche de 15 minutes
+        $start = new \DateTime('00:00');
+        $end = new \DateTime('23:59');
+        $interval = new \DateInterval('PT15M');
+        $period = new \DatePeriod($start, $interval, $end);
+
+        foreach ($period as $dt) {
+            $time = $dt->format('H:i');
+            $this->timeSlots[$time] = $time;
+        }
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+
+
         $builder
             -> add('name', TextType::class, [
                 'label' => 'Nom',
@@ -38,10 +61,13 @@ class ReservationFormType extends AbstractType
                     'autocomplete' => 'off',
                 ],
             ])
-            -> add('hourReservation', TimeType::class, [
+            ->add('hourReservation', ChoiceType::class, [
                 'label' => 'Heure de réservation',
-                'widget' => 'single_text',
-                'html5' => false,
+                'choices' => $this->timeSlots,
+                'placeholder' => 'Choisir une heure',
+                'required' => true,
+                'expanded' => false,
+                'multiple' => false,
                 'attr' => [
                     'class' => 'js-timepicker',
                     'autocomplete' => 'off',
