@@ -15,33 +15,53 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\Regex;
-use DateTime;
-use DateTimeInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 class ReservationFormType extends AbstractType
 {
-    private array $timeSlots;
+    private ManagerRegistry $doctrine;
 
-    public function __construct()
+    public function __construct(ManagerRegistry $doctrine)
     {
-        // Génération des créneaux horaires par tranche de 15 minutes
-        $start = new \DateTime('00:00');
-        $end = new \DateTime('23:59');
-        $interval = new \DateInterval('PT15M');
-        $period = new \DatePeriod($start, $interval, $end);
+        $this -> doctrine = $doctrine;
+    }
 
-        foreach ($period as $dt) {
-            $time = $dt->format('H:i');
-            $this->timeSlots[$time] = $time;
+    private function getReservationTimeSlots(): array
+    {
+        $reservationsSettings = $this -> doctrine
+            -> getRepository(ReservationsSettings::class)
+            -> findOneBy([]);
+
+        if (!$reservationsSettings) {
+            throw new \Exception('Aucun paramètre de réservation n\'a été configuré.');
         }
+
+        $lunchOpeningTime = $reservationsSettings -> getLunchOpeningTime();
+        $lunchClosingTime = $reservationsSettings -> getLunchClosingTime();
+        $dinnerOpeningTime = $reservationsSettings -> getDinnerOpeningTime();
+        $dinnerClosingTime = $reservationsSettings -> getDinnerClosingTime();
+
+        $interval = new \DateInterval('PT15M'); // Tranche de 15 minutes
+        $timeSlots = [];
+
+        $period = new \DatePeriod($lunchOpeningTime, $interval, $lunchClosingTime);
+        foreach ($period as $dt) {
+            $time = $dt -> format('H:i');
+            $timeSlots[$time] = $time;
+        }
+
+        $period = new \DatePeriod($dinnerOpeningTime, $interval, $dinnerClosingTime);
+        foreach ($period as $dt) {
+            $time = $dt -> format('H:i');
+            $timeSlots[$time] = $time;
+        }
+
+        return $timeSlots;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
-
-
         $builder
             -> add('name', TextType::class, [
                 'label' => 'Nom',
@@ -50,7 +70,7 @@ class ReservationFormType extends AbstractType
                         "Le nom ne doit contenir que des lettres, sans accents")
                 ],
             ])
-            ->add('dateReservation', DateType::class, [
+            -> add('dateReservation', DateType::class, [
                 'label' => 'Date de réservation',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
@@ -61,9 +81,9 @@ class ReservationFormType extends AbstractType
                     'autocomplete' => 'off',
                 ],
             ])
-            ->add('hourReservation', ChoiceType::class, [
+            -> add('hourReservation', ChoiceType::class, [
                 'label' => 'Heure de réservation',
-                'choices' => $this->timeSlots,
+                'choices' => $this -> getReservationTimeSlots(),
                 'placeholder' => 'Choisir une heure',
                 'required' => true,
                 'expanded' => false,
