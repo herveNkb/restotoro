@@ -839,8 +839,30 @@ label {
 }
 
 /*XI-b) Modification form profile page */
+.profile-edit-title {
+    margin-bottom: 100px;
+}
+
 .btn-color {
     background-color: #057570;
+}
+
+@media screen and (min-width: 800px) {
+    .profile-edit-title {
+        margin-bottom: 150px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .profile-edit-title {
+        margin-bottom: 200px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .profile-edit-title {
+        margin-bottom: 250px;
+    }
 }
 
 /*XI-c) Modification form password profil page */
