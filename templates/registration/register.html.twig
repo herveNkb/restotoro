@@ -50,6 +50,24 @@
                     class: 'form-floating'
                 }
             }) }}
+            {{ form_row(registrationForm.defaultCustomerNumber, {
+                label: 'Nombre de convives (facultatif)',
+                attr: {
+                    placeholder: 'Nombre de convives (facultatif)'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
+            {{ form_row(registrationForm.default_allergies, {
+                label: 'Allergies (facultatif)',
+                attr: {
+                    placeholder: 'Indiquez vos allergies (facultatif)'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
             {{ form_row(registrationForm.agreeTerms) }}
 
             <div class="container-btn-form">
