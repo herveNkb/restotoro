@@ -4,7 +4,7 @@
 {% block body %}
 
     <main class="container-form">
-        <h1 style="margin-bottom: 150px">Modification du profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
+        <h1 class="profile-edit-title">Modification du profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
         <div class="form form-register-tablet container-pc">
             {{ form_start(form) }}
             {{ form_row(form.name, {
