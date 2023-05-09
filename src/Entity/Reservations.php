@@ -26,6 +26,12 @@ class Reservations
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?Users $users = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $dateReservation = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $hourReservation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +81,30 @@ class Reservations
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getDateReservation(): ?\DateTimeInterface
+    {
+        return $this->dateReservation;
+    }
+
+    public function setDateReservation(\DateTimeInterface $dateReservation): self
+    {
+        $this->dateReservation = $dateReservation;
+
+        return $this;
+    }
+
+    public function getHourReservation(): ?\DateTimeInterface
+    {
+        return $this->hourReservation;
+    }
+
+    public function setHourReservation(\DateTimeInterface $hourReservation): self
+    {
+        $this->hourReservation = $hourReservation;
 
         return $this;
     }
