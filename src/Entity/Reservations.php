@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReservationsRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -97,15 +99,21 @@ class Reservations
         return $this;
     }
 
-    public function getHourReservation(): ?\DateTimeInterface
+    public function getHourReservation(): ?string
     {
-        return $this->hourReservation;
+        if ($this->hourReservation instanceof DateTimeInterface) {
+            return $this->hourReservation->format('H:i');
+    }
+        return null;
     }
 
-    public function setHourReservation(\DateTimeInterface $hourReservation): self
+    public function setHourReservation(?string $hourReservation): self
     {
-        $this->hourReservation = $hourReservation;
-
+        if ($hourReservation !== null) {
+            $this->hourReservation = DateTime::createFromFormat('H:i', $hourReservation);
+        } else {
+            $this->hourReservation = null;
+        }
         return $this;
     }
 }
