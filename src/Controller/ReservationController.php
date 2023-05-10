@@ -28,7 +28,11 @@ class ReservationController extends AbstractController
         if ($user) {
             // Utiliser les données de l'utilisateur connecté pour pré-remplir le formulaire
             $reservation = new Reservations();
-            $reservation->setCustomerNumber($user->getDefaultCustomerNumber());
+            $defaultCustomerNumber = $user->getDefaultCustomerNumber();
+            // Vérifie si l'utilisateur à un nombre de couverts par défaut
+            if ($defaultCustomerNumber !== null) {
+                $reservation->setCustomerNumber($defaultCustomerNumber);
+            }
             $reservation->setAllergies($user->getDefaultAllergies());
 
             // Créer le formulaire en lui passant l'objet $reservation
