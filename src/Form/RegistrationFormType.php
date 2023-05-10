@@ -54,8 +54,8 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'Nom'
                 ],
                 'constraints' => [
-                    new Regex('/^[a-zA-Z]+$/',
-                        "Le prénom ne doit contenir que des lettres, sans accents")
+                    new Regex('/^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/u',
+                        "Le prénom ne doit contenir que des lettres, sans caractères spéciaux, ni chiffres")
                 ],
             ])
             ->add('firstName', TextType::class, [
@@ -64,12 +64,13 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'Prénom'
                 ],
                 'constraints' => [
-                    new Regex('/^[a-zA-Z]+$/',
-                        "Le nom ne doit contenir que des lettres, sans accents")
+                    new Regex('/^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/u',
+                        "Le prénom ne doit contenir que des lettres, sans caractères spéciaux, ni chiffres")
                 ],
             ])
             ->add('defaultCustomerNumber', IntegerType::class, [
                 'label' =>'Nombre de convives',
+                'required' => false,
                 'constraints' => [
                     new Regex([
                         'pattern' => '/^(?!.*\d{3,})\d+$/',
@@ -87,6 +88,7 @@ class RegistrationFormType extends AbstractType
             ])
             -> add('default_allergies', TextareaType::class, [
                 'label' => 'Allergies - (Séparez les allergies par un trait d\'union)',
+                'required' => false,
                 'attr' => [
                     'class' => 'auto-resize'
                 ],

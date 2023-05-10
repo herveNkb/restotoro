@@ -66,12 +66,13 @@ class ReservationFormType extends AbstractType
             -> add('name', TextType::class, [
                 'label' => 'Nom',
                 'constraints' => [
-                    new Regex('/^[a-zA-Z]+$/',
-                        "Le nom ne doit contenir que des lettres, sans accents")
+                    new Regex('/^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/u',
+                        "Le Nom ne doit contenir que des lettres, sans caractères spéciaux, ni chiffres")
                 ],
             ])
             -> add('dateReservation', DateType::class, [
                 'label' => 'Date de réservation',
+                'placeholder' => 'Choisir une date',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
                 'html5' => true,
