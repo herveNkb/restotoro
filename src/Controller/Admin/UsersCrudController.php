@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Users;
 use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -29,6 +30,13 @@ class UsersCrudController extends AbstractCrudController
             yield TextareaField ::new('default_allergies', 'Allergies'),
             yield BooleanField ::new('is_verified', 'compte vérifié'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            -> setEntityLabelInSingular('Utilisateur du site')
+            -> setEntityLabelInPlural('Utilisateurs du site');
     }
 
 
