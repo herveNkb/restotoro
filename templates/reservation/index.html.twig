@@ -4,7 +4,7 @@
 
 {% block body %}
     <main class="container-form">
-        <h1 class="reservation-title">Réservation d'une table</h1>
+        <h1 class="form-title">Réservation d'une table</h1>
         <div class="form form-register-tablet container-pc">
             {{ form_start(form) }}
             {{ form_row(form.name, {
@@ -40,7 +40,7 @@
                     placeholder: 'Nombre de convives'
                 },
                 row_attr: {
-                    class: 'form-floating'
+                    class: 'form-floating form-number'
                 }
             }) }}
             {{ form_row(form.allergies, {

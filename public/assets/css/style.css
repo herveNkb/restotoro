@@ -18,6 +18,7 @@ XI) Profile modification page:
 XI-a) "Mon compte" page
 XI-b) Modification form profile page
 XI-c) Modification form password profil page
+XII) "Réservation" page
 End) Legal notice page
 */
 
@@ -922,6 +923,10 @@ label {
     }
 }
 
+/* XII) Reservation page: */
+.form-number {
+    margin-top: 50px;
+}
 
 /* End) Legal notice page */
 .legal-notice {
