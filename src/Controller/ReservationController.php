@@ -10,13 +10,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ReservationsRepository;
 
 class ReservationController extends AbstractController
 {
+    private $reservationsRepository;
+
+    public function __construct(ReservationsRepository $reservationsRepository) // Ajoutez le paramètre dans le constructeur
+    {
+        $this->reservationsRepository = $reservationsRepository;
+    }
+
     #[Route('/reservation', name: 'app_reservation')]
     public function index(ManagerRegistry $doctrine, Request $request): Response
-    {
-        // Récupérer les paramètres de réservation
+    {// Récupère les paramètres de réservation
         $settings = $doctrine->getRepository(ReservationsSettings::class)->findOneBy([]);
 
         // Si aucun paramètre de réservation n'a été configuré, lève une exception
@@ -24,30 +31,47 @@ class ReservationController extends AbstractController
             throw $this->createNotFoundException('Aucun paramètre de réservation n\'a été configuré.');
         }
 
-        $user = $this->getUser(); // Récupérer l'utilisateur connecté
+        $user = $this->getUser(); // Récupère l'utilisateur connecté
         if ($user) {
-            // Utiliser les données de l'utilisateur connecté pour pré-remplir le formulaire
+            // Utilise les données de l'utilisateur connecté pour pré-remplir le formulaire
             $reservation = new Reservations();
             $defaultCustomerNumber = $user->getDefaultCustomerNumber();
-            // Vérifie si l'utilisateur à un nombre de couverts par défaut
+            // Vérifie si l'utilisateur a un nombre de couverts par défaut
             if ($defaultCustomerNumber !== null) {
                 $reservation->setCustomerNumber($defaultCustomerNumber);
             }
             $reservation->setAllergies($user->getDefaultAllergies());
 
-            // Créer le formulaire en lui passant l'objet $reservation
+            // Crée le formulaire en lui passant l'objet $reservation
             $form = $this->createForm(ReservationFormType::class, $reservation);
         } else {
             $form = $this->createForm(ReservationFormType::class);
         }
 
-        // Traiter les données du formulaire
+        // Traite les données du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $reservation = $form->getData();
 
-            // Récupérer l'heure de réservation
+            // Vérifie si le nombre de clients pour la date de réservation a atteint le maximum autorisé
+            $dateReservation = $reservation->getDateReservation();
+            $numberOfCustomers = $this->reservationsRepository->countReservationsForDate($dateReservation);
+
+            $maxCustomersPerDay = $settings->getMaxCustomersPerDay();
+            if ($maxCustomersPerDay !== null && $numberOfCustomers + $reservation->getCustomerNumber() > $maxCustomersPerDay) {
+                $this->addFlash('error', 'Le nombre maximum de réservations pour cette date a été atteint.');
+                return $this->redirectToRoute('app_formulas');
+            }
+
+            // Vérifie si le nombre total de clients pour cette réservation dépasse le maximum autorisé
+            $totalNumberOfCustomers = $this->reservationsRepository->countTotalCustomersForDate($dateReservation);
+            if ($maxCustomersPerDay !== null && $totalNumberOfCustomers + $reservation->getCustomerNumber() > $maxCustomersPerDay) {
+                $this->addFlash('error', 'Le nombre maximum de clients pour cette date a été atteint.');
+                return $this->redirectToRoute('app_menus');
+            }
+
+            // Récupère l'heure de réservation
             $reservation->setHourReservation($reservation->getHourReservation());
 
             $doctrine->getManager()->persist($reservation);
