@@ -93,4 +93,10 @@ class ReservationsSettings
 
         return $this;
     }
+
+    public function getMaxCustomersPerDay(): ?int
+    {
+
+        return $this->maxCustomers;
+    }
 }
