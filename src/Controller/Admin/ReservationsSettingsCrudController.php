@@ -25,6 +25,7 @@ class ReservationsSettingsCrudController extends AbstractCrudController
             yield TimeField ::new('lunchClosingTime', 'Fin service de midi'),
             yield TimeField ::new('dinnerOpeningTime', 'Début service du soir'),
             yield TimeField ::new('dinnerClosingTime', 'Début service du soir'),
+            yield IntegerField ::new('maxCustomers', 'Nombre de places maximum'),
         ];
     }
 

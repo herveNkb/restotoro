@@ -45,7 +45,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem ::linkToCrud('Formules de la carte', 'fas fa-clipboard', Formulas::class);
         yield MenuItem ::linkToCrud('Horaires d\'ouverture', 'fas fa-clock', Openings::class);
         yield MenuItem ::subMenu('Réservations', 'fas fa-users') -> setSubItems([
-            MenuItem ::linkToCrud('Heures de service', 'fas fa-clock', ReservationsSettings::class),
+            MenuItem ::linkToCrud('Paramétrages', 'fas fa-clock', ReservationsSettings::class),
             MenuItem ::linkToCrud('Réservations', 'fas fa-list', Reservations::class),
         ]);
         yield MenuItem ::linkToCrud('Profils', 'fas fa-user', Users::class);
