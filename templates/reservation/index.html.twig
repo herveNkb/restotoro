@@ -16,7 +16,15 @@
                     class: 'form-floating'
                 }
             }) }}
-            {{ form_row(form.dateReservation) }}
+            {{ form_row(form.dateReservation, {
+                label: 'Date de réservation',
+                attr: {
+                    placeholder: 'Date de réservation'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
             {{ form_row(form.hourReservation, {
                 label: 'Heure de réservation',
                 attr: {
