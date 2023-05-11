@@ -4,11 +4,13 @@
 
 {% block body %}
 
+    {# Begin flash message #}
     <div class="d-flex justify-content-center align-items-center">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success text-center" role="alert">{{ message }}</div>
         {% endfor %}
     </div>
+    {# End flash message #}
 
     <main>
         <h1 class="profile-title">Profil de {{ app.user.firstName }} {{ app.user.name }}</h1>
@@ -33,7 +35,6 @@
                 <p class="profile-label">Allergies :</p>
                 <p class="profile-data profile-last-data">{{ app.user.defaultAllergies }}</p>
             </div>
-
             <div class="btn-reservation-wrapper">
                 <div class="btn-reservation-container">
                     <a href="{{ path('app_profile_edit') }}" class="btn-reservation btn-form">Modifier le profil</a>
@@ -45,4 +46,5 @@
             </div>
         </section>
     </main>
+
 {% endblock %}

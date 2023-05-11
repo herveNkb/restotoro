@@ -28,53 +28,53 @@ class Openings
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getOpeningDay(): ?string
     {
-        return $this->opening_day;
+        return $this -> opening_day;
     }
 
     public function setOpeningDay(string $opening_day): self
     {
-        $this->opening_day = $opening_day;
+        $this -> opening_day = $opening_day;
 
         return $this;
     }
 
     public function getOpeningMorning(): ?string
     {
-        return $this->opening_morning;
+        return $this -> opening_morning;
     }
 
     public function setOpeningMorning(string $opening_morning): self
     {
-        $this->opening_morning = $opening_morning;
+        $this -> opening_morning = $opening_morning;
 
         return $this;
     }
 
     public function getOpeningAfternoon(): ?string
     {
-        return $this->opening_afternoon;
+        return $this -> opening_afternoon;
     }
 
     public function setOpeningAfternoon(string $opening_afternoon): self
     {
-        $this->opening_afternoon = $opening_afternoon;
+        $this -> opening_afternoon = $opening_afternoon;
 
         return $this;
     }
 
     public function getUsers(): ?Users
     {
-        return $this->users;
+        return $this -> users;
     }
 
     public function setUsers(?Users $users): self
     {
-        $this->users = $users;
+        $this -> users = $users;
 
         return $this;
     }

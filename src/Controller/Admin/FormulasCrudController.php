@@ -22,7 +22,7 @@ class FormulasCrudController extends AbstractCrudController
         return [
             yield TextField ::new('formula_title', 'Nom de la formule'),
             yield IntegerField ::new('formula_price', 'Tarif'),
-            yield TextEditorField::new('description', 'Description')->hideOnIndex()->setNumOfRows(20), // hideOnIndex() is used to hide the field on the index page,
+            yield TextEditorField ::new('description', 'Description') -> hideOnIndex() -> setNumOfRows(20), // hideOnIndex() is used to hide the field on the index page,
         ];
     }
 

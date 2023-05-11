@@ -23,22 +23,22 @@ class Categories
 
     public function __construct()
     {
-        $this->menus = new ArrayCollection();
+        $this -> menus = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getDishCategorie(): ?string
     {
-        return $this->dish_categorie;
+        return $this -> dish_categorie;
     }
 
     public function setDishCategorie(string $dish_categorie): self
     {
-        $this->dish_categorie = $dish_categorie;
+        $this -> dish_categorie = $dish_categorie;
 
         return $this;
     }
@@ -48,14 +48,14 @@ class Categories
      */
     public function getMenus(): Collection
     {
-        return $this->menus;
+        return $this -> menus;
     }
 
     public function addMenu(Menus $menu): self
     {
-        if (!$this->menus->contains($menu)) {
-            $this->menus->add($menu);
-            $menu->setCategories($this);
+        if (!$this -> menus -> contains($menu)) {
+            $this -> menus -> add($menu);
+            $menu -> setCategories($this);
         }
 
         return $this;
@@ -63,10 +63,10 @@ class Categories
 
     public function removeMenu(Menus $menu): self
     {
-        if ($this->menus->removeElement($menu)) {
+        if ($this -> menus -> removeElement($menu)) {
             // set the owning side to null (unless already changed)
-            if ($menu->getCategories() === $this) {
-                $menu->setCategories(null);
+            if ($menu -> getCategories() === $this) {
+                $menu -> setCategories(null);
             }
         }
 
@@ -75,6 +75,6 @@ class Categories
 
     public function __toString(): string
     {
-        return $this->dish_categorie;
+        return $this -> dish_categorie;
     }
 }

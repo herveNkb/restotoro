@@ -18,7 +18,7 @@ class OpeningsController extends AbstractController
         // Replaces getDoctrine() which is deprecated since Symfony 5.3
         $openings = $doctrine -> getRepository(Openings::class) -> findAll();
 
-        return $this->render('_partials/_openings.html.twig', [
+        return $this -> render('_partials/_openings.html.twig', [
             'openings' => $openings
         ]);
     }

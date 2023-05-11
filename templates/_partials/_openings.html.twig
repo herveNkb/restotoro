@@ -1,5 +1,6 @@
 <h3 class="openings-title">Horaires d'ouverture :</h3>
 <div class="openings-container">
+
     {% for opening in openings %}
         <div class="openings-day">
             <p class="openings-day-text">{{ opening.openingDay }} :</p>
@@ -7,4 +8,5 @@
             <p>{{ opening.openingAfternoon }}</p>
         </div>
     {% endfor %}
+
 </div>

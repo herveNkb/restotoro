@@ -7,7 +7,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 
-
 // Allows to associate categories with the menus (categories_id)
 class EasyAdminCategoriesMenusSubscriber implements EventSubscriberInterface
 {

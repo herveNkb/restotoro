@@ -25,7 +25,7 @@ class FormulasController extends AbstractController
             'openings' => $openings
         ]);
 
-        return $this->render('formulas/index.html.twig', [
+        return $this -> render('formulas/index.html.twig', [
             'formulas' => $formulas,
             'openingsView' => $openingsView
         ]);

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReservationController!{% endblock %}
+{% block title %}Réservez votre table !{% endblock %}
 
 {% block body %}
     <main class="container-form">
@@ -52,7 +52,6 @@
                     class: 'form-floating'
                 }
             }) }}
-
             <div class="container-btn-form">
                 <button class="btn-reservation btn-form btn-form-position" type="submit">Réserver</button>
             </div>
@@ -62,4 +61,5 @@
             {{ form_end(form) }}
         </div>
     </main>
+
 {% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet email')]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -64,26 +64,26 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->formulas = new ArrayCollection();
-        $this->menuses = new ArrayCollection();
-        $this->reservations = new ArrayCollection();
-        $this->images = new ArrayCollection();
-        $this->openings = new ArrayCollection();
+        $this -> formulas = new ArrayCollection();
+        $this -> menuses = new ArrayCollection();
+        $this -> reservations = new ArrayCollection();
+        $this -> images = new ArrayCollection();
+        $this -> openings = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getEmail(): ?string
     {
-        return $this->email;
+        return $this -> email;
     }
 
     public function setEmail(string $email): self
     {
-        $this->email = $email;
+        $this -> email = $email;
 
         return $this;
     }
@@ -95,7 +95,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this -> email;
     }
 
     /**
@@ -103,7 +103,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this -> email;
     }
 
     /**
@@ -111,7 +111,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        $roles = $this -> roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
@@ -120,7 +120,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        $this -> roles = $roles;
 
         return $this;
     }
@@ -130,12 +130,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
     {
-        return $this->password;
+        return $this -> password;
     }
 
     public function setPassword(string $password): self
     {
-        $this->password = $password;
+        $this -> password = $password;
 
         return $this;
     }
@@ -162,36 +162,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isVerified(): bool
     {
-        return $this->isVerified;
+        return $this -> isVerified;
     }
 
     public function setIsVerified(bool $isVerified): self
     {
-        $this->isVerified = $isVerified;
+        $this -> isVerified = $isVerified;
 
         return $this;
     }
 
     public function getDefaultAllergies(): ?string
     {
-        return $this->default_allergies;
+        return $this -> default_allergies;
     }
 
     public function setDefaultAllergies(?string $default_allergies): self
     {
-        $this->default_allergies = $default_allergies;
+        $this -> default_allergies = $default_allergies;
 
         return $this;
     }
 
     public function getDefaultCustomerNumber(): ?int
     {
-        return $this->default_customer_number;
+        return $this -> default_customer_number;
     }
 
     public function setDefaultCustomerNumber(?int $default_customer_number): self
     {
-        $this->default_customer_number = $default_customer_number;
+        $this -> default_customer_number = $default_customer_number;
 
         return $this;
     }
@@ -201,14 +201,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getFormulas(): Collection
     {
-        return $this->formulas;
+        return $this -> formulas;
     }
 
     public function addFormula(Formulas $formula): self
     {
-        if (!$this->formulas->contains($formula)) {
-            $this->formulas->add($formula);
-            $formula->setUsers($this);
+        if (!$this -> formulas -> contains($formula)) {
+            $this -> formulas -> add($formula);
+            $formula -> setUsers($this);
         }
 
         return $this;
@@ -216,10 +216,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeFormula(Formulas $formula): self
     {
-        if ($this->formulas->removeElement($formula)) {
+        if ($this -> formulas -> removeElement($formula)) {
             // set the owning side to null (unless already changed)
-            if ($formula->getUsers() === $this) {
-                $formula->setUsers(null);
+            if ($formula -> getUsers() === $this) {
+                $formula -> setUsers(null);
             }
         }
 
@@ -231,14 +231,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getMenuses(): Collection
     {
-        return $this->menuses;
+        return $this -> menuses;
     }
 
     public function addMenus(Menus $menus): self
     {
-        if (!$this->menuses->contains($menus)) {
-            $this->menuses->add($menus);
-            $menus->setUsers($this);
+        if (!$this -> menuses -> contains($menus)) {
+            $this -> menuses -> add($menus);
+            $menus -> setUsers($this);
         }
 
         return $this;
@@ -246,10 +246,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeMenus(Menus $menus): self
     {
-        if ($this->menuses->removeElement($menus)) {
+        if ($this -> menuses -> removeElement($menus)) {
             // set the owning side to null (unless already changed)
-            if ($menus->getUsers() === $this) {
-                $menus->setUsers(null);
+            if ($menus -> getUsers() === $this) {
+                $menus -> setUsers(null);
             }
         }
 
@@ -261,14 +261,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getReservations(): Collection
     {
-        return $this->reservations;
+        return $this -> reservations;
     }
 
     public function addReservation(Reservations $reservation): self
     {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
-            $reservation->setUsers($this);
+        if (!$this -> reservations -> contains($reservation)) {
+            $this -> reservations -> add($reservation);
+            $reservation -> setUsers($this);
         }
 
         return $this;
@@ -276,10 +276,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeReservation(Reservations $reservation): self
     {
-        if ($this->reservations->removeElement($reservation)) {
+        if ($this -> reservations -> removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($reservation->getUsers() === $this) {
-                $reservation->setUsers(null);
+            if ($reservation -> getUsers() === $this) {
+                $reservation -> setUsers(null);
             }
         }
 
@@ -291,14 +291,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getImages(): Collection
     {
-        return $this->images;
+        return $this -> images;
     }
 
     public function addImage(Images $image): self
     {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->setUser($this);
+        if (!$this -> images -> contains($image)) {
+            $this -> images -> add($image);
+            $image -> setUser($this);
         }
 
         return $this;
@@ -306,10 +306,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeImage(Images $image): self
     {
-        if ($this->images->removeElement($image)) {
+        if ($this -> images -> removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getUser() === $this) {
-                $image->setUser(null);
+            if ($image -> getUser() === $this) {
+                $image -> setUser(null);
             }
         }
 
@@ -321,14 +321,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getOpenings(): Collection
     {
-        return $this->openings;
+        return $this -> openings;
     }
 
     public function addOpening(Openings $opening): self
     {
-        if (!$this->openings->contains($opening)) {
-            $this->openings->add($opening);
-            $opening->setUsers($this);
+        if (!$this -> openings -> contains($opening)) {
+            $this -> openings -> add($opening);
+            $opening -> setUsers($this);
         }
 
         return $this;
@@ -336,10 +336,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeOpening(Openings $opening): self
     {
-        if ($this->openings->removeElement($opening)) {
+        if ($this -> openings -> removeElement($opening)) {
             // set the owning side to null (unless already changed)
-            if ($opening->getUsers() === $this) {
-                $opening->setUsers(null);
+            if ($opening -> getUsers() === $this) {
+                $opening -> setUsers(null);
             }
         }
 
@@ -348,24 +348,24 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this -> name;
     }
 
     public function setName(string $name): self
     {
-        $this->name = $name;
+        $this -> name = $name;
 
         return $this;
     }
 
     public function getFirstName(): ?string
     {
-        return $this->first_name;
+        return $this -> first_name;
     }
 
     public function setFirstName(string $first_name): self
     {
-        $this->first_name = $first_name;
+        $this -> first_name = $first_name;
 
         return $this;
     }

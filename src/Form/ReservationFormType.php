@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Reservations;
 use App\Entity\ReservationsSettings;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -15,7 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\Regex;
-use Doctrine\Persistence\ManagerRegistry;
 
 
 class ReservationFormType extends AbstractType
@@ -27,30 +27,39 @@ class ReservationFormType extends AbstractType
         $this -> doctrine = $doctrine;
     }
 
+
+    // Function to get the time slots for the reservation form
     private function getReservationTimeSlots(): array
     {
+        // Get the reservations settings
         $reservationsSettings = $this -> doctrine
             -> getRepository(ReservationsSettings::class)
             -> findOneBy([]);
 
+        // If no reservations settings are found, throw an exception
         if (!$reservationsSettings) {
             throw new \Exception('Aucun paramètre de réservation n\'a été configuré.');
         }
 
+        // Get the opening and closing times for lunch and dinner
         $lunchOpeningTime = $reservationsSettings -> getLunchOpeningTime();
         $lunchClosingTime = $reservationsSettings -> getLunchClosingTime();
         $dinnerOpeningTime = $reservationsSettings -> getDinnerOpeningTime();
         $dinnerClosingTime = $reservationsSettings -> getDinnerClosingTime();
 
-        $interval = new \DateInterval('PT15M'); // Tranche de 15 minutes
+
+        // Get the time slots for lunch and dinner
+        $interval = new \DateInterval('PT15M'); // 15 minute intervals
         $timeSlots = [];
 
+        // For lunch
         $period = new \DatePeriod($lunchOpeningTime, $interval, $lunchClosingTime);
         foreach ($period as $dt) {
             $time = $dt -> format('H:i');
             $timeSlots[$time] = $time;
         }
 
+        // For dinner
         $period = new \DatePeriod($dinnerOpeningTime, $interval, $dinnerClosingTime);
         foreach ($period as $dt) {
             $time = $dt -> format('H:i');
@@ -78,7 +87,6 @@ class ReservationFormType extends AbstractType
                 'html5' => true,
                 'format' => 'yyyy-MM-dd',
                 'attr' => [
-                    'class' => 'form-datepicker',
                     'autocomplete' => 'off',
                 ],
             ])
@@ -90,7 +98,6 @@ class ReservationFormType extends AbstractType
                 'expanded' => false,
                 'multiple' => false,
                 'attr' => [
-                    'class' => 'js-timepicker',
                     'autocomplete' => 'off',
                 ],
             ])

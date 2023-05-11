@@ -36,83 +36,86 @@ class Reservations
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this -> name;
     }
 
     public function setName(string $name): self
     {
-        $this->name = $name;
+        $this -> name = $name;
 
         return $this;
     }
 
     public function getCustomerNumber(): ?int
     {
-        return $this->customer_number;
+        return $this -> customer_number;
     }
 
     public function setCustomerNumber(int $customer_number): self
     {
-        $this->customer_number = $customer_number;
+        $this -> customer_number = $customer_number;
 
         return $this;
     }
 
     public function getAllergies(): ?string
     {
-        return $this->allergies;
+        return $this -> allergies;
     }
 
     public function setAllergies(?string $allergies): self
     {
-        $this->allergies = $allergies;
+        $this -> allergies = $allergies;
 
         return $this;
     }
 
     public function getUsers(): ?Users
     {
-        return $this->users;
+        return $this -> users;
     }
 
     public function setUsers(?Users $users): self
     {
-        $this->users = $users;
+        $this -> users = $users;
 
         return $this;
     }
 
     public function getDateReservation(): ?\DateTimeInterface
     {
-        return $this->dateReservation;
+        return $this -> dateReservation;
     }
 
     public function setDateReservation(\DateTimeInterface $dateReservation): self
     {
-        $this->dateReservation = $dateReservation;
+        $this -> dateReservation = $dateReservation;
 
         return $this;
     }
 
     public function getHourReservation(): ?string
     {
-        if ($this->hourReservation instanceof DateTimeInterface) {
-            return $this->hourReservation->format('H:i');
-    }
+        if ($this -> hourReservation instanceof DateTimeInterface) {
+            return $this -> hourReservation -> format('H:i');
+        }
         return null;
     }
 
+
+    // Converts the string to a DateTime object.
+    // If no time is given, the property is set to null.
     public function setHourReservation(?string $hourReservation): self
     {
         if ($hourReservation !== null) {
-            $this->hourReservation = DateTime::createFromFormat('H:i', $hourReservation);
+            $this -> hourReservation = DateTime ::createFromFormat('H:i', $hourReservation);
         } else {
-            $this->hourReservation = null;
+            $this -> hourReservation = null;
         }
         return $this;
     }

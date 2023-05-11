@@ -6,7 +6,6 @@
         {{ url('app_reset_password', {token: resetToken.token}) }}
     </a>
 </p>
-
 <p>
     Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
 </p>

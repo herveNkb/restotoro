@@ -18,49 +18,25 @@ class FormulasRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Formulas::class);
+        parent ::__construct($registry, Formulas::class);
     }
 
     public function save(Formulas $entity, bool $flush = false): void
     {
-        $this->getEntityManager()->persist($entity);
+        $this -> getEntityManager() -> persist($entity);
 
         if ($flush) {
-            $this->getEntityManager()->flush();
+            $this -> getEntityManager() -> flush();
         }
     }
 
     public function remove(Formulas $entity, bool $flush = false): void
     {
-        $this->getEntityManager()->remove($entity);
+        $this -> getEntityManager() -> remove($entity);
 
         if ($flush) {
-            $this->getEntityManager()->flush();
+            $this -> getEntityManager() -> flush();
         }
     }
 
-//    /**
-//     * @return Formulas[] Returns an array of Formulas objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Formulas
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

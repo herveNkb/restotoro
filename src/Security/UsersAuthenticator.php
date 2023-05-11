@@ -27,31 +27,31 @@ class UsersAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->request->get('email', '');
+        $email = $request -> request -> get('email', '');
 
-        $request->getSession()->set(Security::LAST_USERNAME, $email);
+        $request -> getSession() -> set(Security::LAST_USERNAME, $email);
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
+            new PasswordCredentials($request -> request -> get('password', '')),
             [
-                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+                new CsrfTokenBadge('authenticate', $request -> request -> get('_csrf_token')),
             ]
         );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+        if ($targetPath = $this -> getTargetPath($request -> getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
 
         // Redirects the "user" to the home page (app_main), once authentication is successful
-        return new RedirectResponse($this->urlGenerator->generate('app_main'));
+        return new RedirectResponse($this -> urlGenerator -> generate('app_main'));
     }
 
     protected function getLoginUrl(Request $request): string
     {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        return $this -> urlGenerator -> generate(self::LOGIN_ROUTE);
     }
 }

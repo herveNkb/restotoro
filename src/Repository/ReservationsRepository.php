@@ -39,22 +39,22 @@ class ReservationsRepository extends ServiceEntityRepository
         }
     }
 
-    // compte le nombre de réservations existantes pour une date donnée
+    // function to count the number of existing reservations for a given date
     public function countReservationsForDate(\DateTimeInterface $dateReservation): int
     {
-        return $this -> createQueryBuilder('r') // r est l'alias de la table Reservations
-        -> select('COUNT(r.id)') // compte le nombre de réservations totales pour une date donnée
-        -> where('r.dateReservation = :date') // filtre les réservations pour une date donnée
-        -> setParameter('date', $dateReservation) // lie le paramètre date à la date de réservation
-        -> getQuery() // construit la requête
-        -> getSingleScalarResult(); // exécute la requête et retourne un résultat unique (scalaire = un seul résultat)
+        return $this -> createQueryBuilder('r') // r is the alias of the Reservations table
+        -> select('COUNT(r.id)') // counts the number of total reservations for a given date
+        -> where('r.dateReservation = :date') // filters reservations for a given date
+        -> setParameter('date', $dateReservation) // binds the date parameter to the booking date
+        -> getQuery() // build the query
+        -> getSingleScalarResult(); // executes the query and returns a single result (scalar = a single result)
     }
 
-    // compte le nombre total de clients pour une date donnée
+    // Function to count the total number of customers for a given date
     public function countTotalCustomersForDate(\DateTimeInterface $dateReservation): int
     {
-        return $this -> createQueryBuilder('r') // r est l'alias de la table Reservations
-        -> select('COALESCE(SUM(r.customer_number), 0)') // somme le nombre de clients pour une date donnée (COALESCE permet de retourner 0 si la somme est nulle)
+        return $this -> createQueryBuilder('r') // r is the alias of the Reservations table
+        -> select('COALESCE(SUM(r.customer_number), 0)') // sum the number of customers for a given date (COALESCE returns 0 if the sum is zero)
         -> where('r.dateReservation = :date')
             -> setParameter('date', $dateReservation)
             -> getQuery()

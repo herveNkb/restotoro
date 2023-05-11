@@ -25,16 +25,16 @@ class MenusController extends AbstractController
             'openings' => $openings
         ]);
 
-        //  Tableau qui sert à grouper les menus par catégorie
+        //  Table used to group menus by category
         $groupedMenus = [];
-        // Boucle qui itére sur les menus récupérés précédemment avec la méthode findAll()
+        // Loop that iterates over the menus retrieved previously with the findAll() method
         foreach ($menus as $menu) {
-            // récupère le nom de la catégorie du menu
+            // get menu category name
             $categoryName = $menu -> getCategories() -> getDishCategorie();
-            // Ajoute le menu dans le tableau $groupedMenus
+            // Add the menu to the array $groupedMenus
             $groupedMenus[$categoryName][] = $menu;
         }
-        return $this->render('menus/index.html.twig', [
+        return $this -> render('menus/index.html.twig', [
             'groupedMenus' => $groupedMenus,
             'openingsView' => $openingsView
         ]);

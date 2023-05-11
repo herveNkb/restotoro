@@ -22,14 +22,14 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, [
+            -> add('email', EmailType::class, [
                 'label' => 'Adresse email',
                 'constraints' => [
                     new Regex('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/',
                         "L'adresse email n'est pas valide")
                 ],
             ])
-            ->add('agreeTerms', CheckboxType::class, [
+            -> add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'Vous acceptez que votre email soit utilisé pour pouvoir vous connecter',
                 'constraints' => [
@@ -38,17 +38,17 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
+            -> add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/',
-                    "Il faut un mot de passe de 12 caractères, avec au minimum une majuscule, une minuscule, un chiffre et un caractère spécial")
+                        "Il faut un mot de passe de 12 caractères, avec au minimum une majuscule, une minuscule, un chiffre et un caractère spécial")
                 ],
             ])
-            ->add('name', TextType::class, [
+            -> add('name', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom'
@@ -58,7 +58,7 @@ class RegistrationFormType extends AbstractType
                         "Le prénom ne doit contenir que des lettres, sans caractères spéciaux, ni chiffres")
                 ],
             ])
-            ->add('firstName', TextType::class, [
+            -> add('firstName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
                     'placeholder' => 'Prénom'
@@ -68,8 +68,8 @@ class RegistrationFormType extends AbstractType
                         "Le prénom ne doit contenir que des lettres, sans caractères spéciaux, ni chiffres")
                 ],
             ])
-            ->add('defaultCustomerNumber', IntegerType::class, [
-                'label' =>'Nombre de convives',
+            -> add('defaultCustomerNumber', IntegerType::class, [
+                'label' => 'Nombre de convives',
                 'required' => false,
                 'constraints' => [
                     new Regex([
@@ -92,13 +92,12 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'class' => 'auto-resize'
                 ],
-        ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
+        $resolver -> setDefaults([
             'data_class' => Users::class,
         ]);
     }

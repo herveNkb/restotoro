@@ -22,7 +22,7 @@ class MenusCrudController extends AbstractCrudController
             yield TextField ::new('dish_title', 'Nom du plat'),
             yield IntegerField ::new('dish_price', 'Prix'),
             yield TextField ::new('dish_description', 'Description'),
-            yield AssociationField::new('categories', 'Catégorie')
+            yield AssociationField ::new('categories', 'Catégorie')
         ];
     }
 

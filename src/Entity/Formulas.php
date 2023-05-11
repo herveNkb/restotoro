@@ -29,53 +29,53 @@ class Formulas
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getFormulaTitle(): ?string
     {
-        return $this->formula_title;
+        return $this -> formula_title;
     }
 
     public function setFormulaTitle(string $formula_title): self
     {
-        $this->formula_title = $formula_title;
+        $this -> formula_title = $formula_title;
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this -> description;
     }
 
     public function setDescription(string $description): self
     {
-        $this->description = $description;
+        $this -> description = $description;
 
         return $this;
     }
 
     public function getFormulaPrice(): ?int
     {
-        return $this->formula_price;
+        return $this -> formula_price;
     }
 
     public function setFormulaPrice(int $formula_price): self
     {
-        $this->formula_price = $formula_price;
+        $this -> formula_price = $formula_price;
 
         return $this;
     }
 
     public function getUsers(): ?Users
     {
-        return $this->users;
+        return $this -> users;
     }
 
     public function setUsers(?Users $users): self
     {
-        $this->users = $users;
+        $this -> users = $users;
 
         return $this;
     }

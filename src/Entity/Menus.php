@@ -31,65 +31,65 @@ class Menus
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this -> id;
     }
 
     public function getDishTitle(): ?string
     {
-        return $this->dish_title;
+        return $this -> dish_title;
     }
 
     public function setDishTitle(string $dish_title): self
     {
-        $this->dish_title = $dish_title;
+        $this -> dish_title = $dish_title;
 
         return $this;
     }
 
     public function getDishPrice(): ?int
     {
-        return $this->dish_price;
+        return $this -> dish_price;
     }
 
     public function setDishPrice(int $dish_price): self
     {
-        $this->dish_price = $dish_price;
+        $this -> dish_price = $dish_price;
 
         return $this;
     }
 
     public function getUsers(): ?Users
     {
-        return $this->users;
+        return $this -> users;
     }
 
     public function setUsers(?Users $users): self
     {
-        $this->users = $users;
+        $this -> users = $users;
 
         return $this;
     }
 
     public function getDishDescription(): ?string
     {
-        return $this->dish_description;
+        return $this -> dish_description;
     }
 
     public function setDishDescription(?string $dish_description): self
     {
-        $this->dish_description = $dish_description;
+        $this -> dish_description = $dish_description;
 
         return $this;
     }
 
     public function getCategories(): ?Categories
     {
-        return $this->categories;
+        return $this -> categories;
     }
 
     public function setCategories(?Categories $categories): self
     {
-        $this->categories = $categories;
+        $this -> categories = $categories;
 
         return $this;
     }

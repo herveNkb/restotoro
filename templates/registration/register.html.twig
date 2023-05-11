@@ -3,12 +3,14 @@
 {% block title %}Enregistrement{% endblock %}
 
 {% block body %}
+    {#  Begin flash message  #}
     {# We display the flash message, if the regitration has a problem #}
     <div class="d-flex justify-content-center align-items-center">
         {% for flash_error in app.flashes('verify_email_error') %}
             <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
         {% endfor %}
     </div>
+    {#  End flash message  #}
 
     <main class="container-form">
         <h1 class="form-title">Enregistrement</h1>
@@ -69,11 +71,11 @@
                 }
             }) }}
             {{ form_row(registrationForm.agreeTerms) }}
-
             <div class="container-btn-form">
                 <button type="submit" class="btn-form btn-form-position btn-login">Enregistrement</button>
             </div>
             {{ form_end(registrationForm) }}
         </div>
     </main>
+
 {% endblock %}
