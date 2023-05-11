@@ -3,12 +3,20 @@
 {% block title %}bienvenue au Quai Antique{% endblock %}
 
 {% block body %}
+{#  Begin flash message  #}
     {# We display the flash message, if the email has been verified #}
     <div class="d-flex justify-content-center align-items-center">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success text-center" role="alert">{{ message }}</div>
         {% endfor %}
     </div>
+    <div class="d-flex justify-content-center align-items-center">
+        {% for flash_error in app.flashes('error') %}
+            <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+    </div>
+{#  End flash message  #}
+
     <main>
         <h1 class="main-title">Bienvenue au Quai Antique</h1>
         <section class="image-container">
