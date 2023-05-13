@@ -30,7 +30,9 @@ class ImagesCrudController extends AbstractCrudController
                 -> onlyOnForms() // onlyOnForms() is used to display the field only on the new and edit pages
                 ->setFormTypeOptions([ // this option allows you to add a file input field with the accept="image/*" attribute
                     'constraints' => [
-                        new Callback([$this, 'validateImageMimeTypeSizeWidthHeight'])
+                        new Callback([
+                            'callback' => [$this, 'validateImageMimeTypeSizeWidthHeight'],
+                        ])
                     ]
                 ]),
             yield ImageField ::new('image_name', 'Apercu')
@@ -42,8 +44,13 @@ class ImagesCrudController extends AbstractCrudController
 
 
     // This method is used to validate the MIME type, file size and image dimensions.
-    public function validateImageMimeTypeSizeWidthHeight(UploadedFile $file, ExecutionContextInterface $context): void
+    public function validateImageMimeTypeSizeWidthHeight(?UploadedFile $file, ExecutionContextInterface $context): void
     {
+        // If no file is uploaded, do not validate anything
+        if ($file === null) {
+            return;
+        }
+
         // Define the allowed MIME types, maximum file size and image dimensions
         $allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         $maxSize = 200 * 1024; // 200 Ko
