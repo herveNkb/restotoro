@@ -25,7 +25,7 @@ class ImagesCrudController extends AbstractCrudController
             yield TextField ::new('image_title', 'Titre de l\'image'),
             yield DateField ::new('updatedAt', 'Date de création')
                 -> hideOnForm(), // hideOnForm() is used to hide the field on the new and edit pages
-            yield TextField ::new('imageFile', 'Poids max: 200 Ko, Taille max: 500x500 px, Formats autorisés: jpeg, jpg, png, gif')
+            yield TextField ::new('imageFile', 'Poids max: 200 Ko, Taille max: 500x500 px, Formats autorisés: jpeg  .jpg  .png  .gif')
                 -> setFormType(VichImageType::class)
                 -> onlyOnForms() // onlyOnForms() is used to display the field only on the new and edit pages
                 ->setFormTypeOptions([ // this option allows you to add a file input field with the accept="image/*" attribute
@@ -61,7 +61,7 @@ class ImagesCrudController extends AbstractCrudController
         $fileMimeType = $file->getMimeType(); // getMimeType() is a method of the UploadedFile class
         // If the MIME type is not in the array of allowed types, add a violation
         if (!in_array($fileMimeType, $allowedMimeTypes, true)) {
-            $context->buildViolation('Format d\'image invalide. Types de formats autorisés : {{ types }}.')
+            $context->buildViolation('Format d\'image invalide, types de formats autorisés : .jpeg  .jpg  .png  .gif')
                 ->setParameter('{{ types }}', implode(', ', $allowedMimeTypes)) // {{ types }} is replaced by the list of allowed MIME types
                 ->addViolation(); // This method adds a violation with the message above
         }
