@@ -40,17 +40,17 @@ a:hover {
 /* I-a) Fonts */
 /* h1 */
 @font-face {
-    font-family: 'Volkhov', serif;
+    font-family: Volkhov;
 }
 
 /* Subtitles */
 @font-face {
-    font-family: 'Patua One', cursive;
+    font-family: "Patua One";
 }
 
 /* Text */
 @font-face {
-    font-family: 'Gentium Book Basic', serif;
+    font-family: "Gentium Book Basic";
 }
 
 /* I-b) Global Headings */
@@ -63,12 +63,12 @@ h1 {
 
 h2 {
     font-size: 1.5rem;
-    font-family: Patua One, cursive;
+    font-family: "Patua One", cursive;
 }
 
 h3 {
     font-size: 1.2rem;
-    font-family: Patua One, cursive;
+    font-family: "Patua One", cursive;
 }
 
 @media screen and (min-width: 800px ) {
@@ -119,7 +119,7 @@ h3 {
 
 p, a {
     line-height: 1.8;
-    font-family: Gentium Book Basic, serif;
+    font-family: "Gentium Book Basic", serif;
 }
 
 /*II) Partials templates:*/
@@ -261,8 +261,7 @@ p, a {
     background-color: #dd992c;
     color: #000;
     padding: 5px 15px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 .btn-form:hover {
@@ -347,7 +346,7 @@ p, a {
 }
 
 .form { /* Text "placeholder" */
-    font-family: Gentium Book Basic, serif;
+    font-family: "Gentium Book Basic", serif;
 }
 
 .form-check {
@@ -415,7 +414,7 @@ label {
 }
 
 .text-check-email > p {
-    font-family: Gentium Book Basic, serif;
+    font-family: "Gentium Book Basic", serif;
 }
 
 .container-check-email :nth-child(2n) {
