@@ -67,7 +67,7 @@ Placer vous dans le répertoire du projet
   cd restotoro
 ```
 
-Modifier le fichier.env selon votre environnement
+Créer et modifier le fichier.env selon votre environnement de travail local
 
 Installez les dépendances avec composer
 
@@ -78,7 +78,7 @@ Installez les dépendances avec composer
 Exécutez les migrations afin de récupérer les tables de la base de données
 
 ```bash
-  php bin/console doctrine:migration:migrate
+  php bin/console doctrine:schema:update --force
 ```
 
 Pour charger les données de test, exécutez les requêtes fournies dans le fichiers `sql/data.sql`
