@@ -37,4 +37,4 @@ textarea.addEventListener('input', function() {
 });
 
 // Initial function call to adjust textarea height on page load
-autoResizeTextarea(textarea);
+autoResizeTextarea(textarea);p
