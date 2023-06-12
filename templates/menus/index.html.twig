@@ -7,11 +7,11 @@
     <main class="menu-container">
         <h1 class=" menu-title">Notre carte</h1>
         <section class="list-menu-container">
-            {# cette boucle permet de grouper les menus par catégorie  #}
+            {# this loop is used to group menus by category  #}
             {% for category, menus in groupedMenus %}
                 <h2 class="menu-category-subtitle">{{ category }}</h2>
                 <ul class="menu-list">
-                    {# cette boucle permet d'afficher les menus selon la catégorie qui leur est associée #}
+                    {# this loop is used to display the menus according to the category associated with them #}
                     {% for menu in menus %}
                         <li class="menu-text">
                             <p><strong>{{ menu.dishTitle }}</strong> - {{ menu.dishPrice }} €</p>
