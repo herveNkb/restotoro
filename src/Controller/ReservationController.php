@@ -59,11 +59,6 @@ class ReservationController extends AbstractController
             $numberOfCustomers = $this -> reservationsRepository -> countReservationsForDate($dateReservation);
 
             $maxCustomersPerDay = $settings -> getMaxCustomersPerDay();
-            if ($maxCustomersPerDay !== null && $numberOfCustomers + $reservation -> getCustomerNumber() > $maxCustomersPerDay) {
-                $this -> addFlash('error', 'Réservation impossible car le nombre maximum de réservations pour cette date a été atteint.');
-                return $this -> redirectToRoute('app_main');
-            }
-
             // Checks if the total number of guests for this reservation exceeds the maximum allowed
             $totalNumberOfCustomers = $this -> reservationsRepository -> countTotalCustomersForDate($dateReservation);
             if ($maxCustomersPerDay !== null && $totalNumberOfCustomers + $reservation -> getCustomerNumber() > $maxCustomersPerDay) {
